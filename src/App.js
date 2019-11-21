@@ -28,7 +28,7 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/login" component={Login}/>
-          <Route exact path="/"><Redirect to="/login"/></Route>
+          <Route exact path="/">{this.props.userCharacter?<Redirect to="/calendar"/>:<Redirect to="/login"/>}</Route>
 
           <Route>
             {this.props.modal?<Modal/>:null}
@@ -51,7 +51,8 @@ class App extends React.Component {
 
 
 const msp = (state) => ({
-  modal: state.modal.modal
+  modal: state.modal.modal,
+  userPrimaryCharacter: state.character.userPrimaryCharacter
 })
 
 export default connect(msp)(App);

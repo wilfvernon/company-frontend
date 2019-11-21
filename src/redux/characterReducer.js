@@ -1,5 +1,5 @@
 const defaultState={
-  userCharacter: null
+  userPrimaryCharacter: null
 }
 
 const characterReducer = (prevState=defaultState, action) => {
