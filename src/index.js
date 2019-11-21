@@ -6,9 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import characterReducer from './redux/characterReducer.js';
-import freeCompanyReducer from './redux/freeCompanyReducer.js';
-import thunkReducer from './redux/thunkReducer.js';
+import characterReducer from './redux/characterReducer.js.js';
+import freeCompanyReducer from './redux/freeCompanyReducer.js.js';
+import thunkReducer from './redux/thunkReducer.js.js';
 
 const rootReducer = combineReducers({
     character: characterReducer,
