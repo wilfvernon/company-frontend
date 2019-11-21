@@ -1,19 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchCharacter, fetchFC } from '../redux/actions.js.js'
+import { fetchCharacter, fetchFC } from '../redux/actions.js'
 
-const Test = () => {
+const Test = (props) => {
 
-    fetches = () => {
-        const { fetchCharacter, fetchFC } = this.props
+    const fetches = () => {
+        const { fetchCharacter, fetchFC } = props
         fetchCharacter("18875885")
         fetchFC("9229283011365769087")
       }
-      
-    const { character, thunking, fc } = this.props
+
+    const { character, thunking, fc } = props
     return(
         <div className="App">
-          <h1 onClick={this.fetches}>{thunking?"thunking":character?character["Character"]["Name"]:"MVP"}</h1>
+          <h1 onClick={fetches}>{thunking?"thunking":character?character["Character"]["Name"]:"MVP"}</h1>
           {fc?<h2>{fc["FreeCompany"]["Name"]}</h2>:null}
           {character?<img src={character["Character"]["Portrait"]} alt="Goose" />:null}
         </div>

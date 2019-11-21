@@ -1,3 +1,4 @@
+//characters
 export const characterAction = (character) => {
     return {type: "CHARACTER", payload: character}
 }
@@ -11,8 +12,10 @@ export function fetchCharacter(id){
     }
 }
 
+
+//free companies
 export const freeCompanyAction = (FC) => {
-    return {type: "FREE_COMPANY", payload: FC}
+    return {type: "FREE_COMPANY_FROM_API", payload: FC}
 }
 
 export function fetchFC(id){
@@ -22,4 +25,13 @@ export function fetchFC(id){
         .then(res=>res.json())
         .then((FC)=>dispatch(freeCompanyAction(FC)))
     }
+}
+
+//modals
+export const closeModal = () => {
+    return {type: "CLOSE_MODAL"}
+}
+
+export const newEventModal = () => {
+    return {type:"NEW_EVENT_MODAL"}
 }

@@ -6,14 +6,16 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import characterReducer from './redux/characterReducer.js.js';
-import freeCompanyReducer from './redux/freeCompanyReducer.js.js';
-import thunkReducer from './redux/thunkReducer.js.js';
+import characterReducer from './redux/characterReducer';
+import freeCompanyReducer from './redux/freeCompanyReducer';
+import thunkReducer from './redux/thunkReducer';
+import modalReducer from './redux/modalReducer';
 
 const rootReducer = combineReducers({
     character: characterReducer,
     freeCompany: freeCompanyReducer,
-    thunk: thunkReducer
+    thunk: thunkReducer,
+    modal: modalReducer
 })
 
 const store = createStore(rootReducer, 
