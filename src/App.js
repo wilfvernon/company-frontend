@@ -27,8 +27,8 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/login" component={Login}/>
-          <Route exact path="/">{this.props.userCharacter?<Redirect to="/calendar"/>:<Redirect to="/login"/>}</Route>
+          <Route path="/login">{this.props.activeUser?<Redirect to="/calendar"/>:<Login/>}</Route>
+          <Route exact path="/">{this.props.activeUser?<Redirect to="/calendar"/>:<Redirect to="/login"/>}</Route>
 
           <Route>
             {this.props.modal?<Modal/>:null}
@@ -52,6 +52,7 @@ class App extends React.Component {
 
 const msp = (state) => ({
   modal: state.modal.modal,
+  activeUser: state.account.activeUser,
   userPrimaryCharacter: state.character.userPrimaryCharacter
 })
 

@@ -1,3 +1,5 @@
+import { FFXIV_API_BASE_URL, RAILS_BASE_URL } from '../index'
+
 //characters
 export const characterAction = (character) => {
     return {type: "CHARACTER", payload: character}
@@ -6,7 +8,7 @@ export const characterAction = (character) => {
 export function fetchCharacter(id){
     return (dispatch) => {
         dispatch({type: "FETCHING"})
-         fetch("https://xivapi.com/character/" + id)
+         fetch(FFXIV_API_BASE_URL + "character/" + id)
         .then(res=>res.json())
         .then((char)=>dispatch(characterAction(char)))
     }
@@ -21,7 +23,7 @@ export const freeCompanyAction = (FC) => {
 export function fetchFC(id){
     return (dispatch) => {
         dispatch({type: "FETCHING"})
-         fetch("https://xivapi.com/freecompany/" + id)
+         fetch(FFXIV_API_BASE_URL + "freecompany/" + id)
         .then(res=>res.json())
         .then((FC)=>dispatch(freeCompanyAction(FC)))
     }
@@ -34,4 +36,30 @@ export const closeModal = () => {
 
 export const newEventModal = () => {
     return {type:"NEW_EVENT_MODAL"}
+}
+
+//accounts
+
+export const activeAccountAction = (account) => {
+    return {type:"ACTIVE_ACCOUNT", payload: account}
+}
+
+export const usernameAuthFailed = () => {
+    return ({type: "AUTH_FAILED"})
+}
+
+export function validateUsername(username){
+    console.log(RAILS_BASE_URL + "accounts/validate/" + username)
+    return (dispatch) => {
+        // dispatch({type: "FETCHING"})
+         fetch(RAILS_BASE_URL + "accounts/validate/" + username)
+        .then(res=>res.json())
+        .then(res=>{
+            if(res.valid){
+                dispatch(activeAccountAction(res.account))
+            } else {
+                dispatch(usernameAuthFailed())
+            }
+        })
+    }
 }

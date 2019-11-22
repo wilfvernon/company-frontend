@@ -10,8 +10,14 @@ import characterReducer from './redux/characterReducer';
 import freeCompanyReducer from './redux/freeCompanyReducer';
 import thunkReducer from './redux/thunkReducer';
 import modalReducer from './redux/modalReducer';
+import accountReducer from './redux/accountReducer'
+
+export const RAILS_BASE_URL = "http://localhost:3000/api/v1/"
+export const FFXIV_API_BASE_URL = "https://xivapi.com/"
+
 
 const rootReducer = combineReducers({
+    account: accountReducer,
     character: characterReducer,
     freeCompany: freeCompanyReducer,
     thunk: thunkReducer,
