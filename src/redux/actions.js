@@ -38,6 +38,20 @@ export const newEventModal = () => {
     return {type:"NEW_EVENT_MODAL"}
 }
 
+//events
+export const accountEventsAction = (events) => {
+    return {type:"GET_USER_EVENTS", payload: events}
+}
+
+export const fetchAccountEvents = (id) => {
+    return dispatch => {
+        dispatch({type: "FETCHING_USER_EVENTS"})
+        fetch(RAILS_BASE_URL + "/accounts/" + id + "/events")
+        .then(res=>res.json())
+        .then(res=>dispatch(accountEventsAction(res)))
+    }
+}
+
 //accounts
 
 export const activeAccountAction = (account) => {

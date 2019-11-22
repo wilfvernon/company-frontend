@@ -6,11 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import accountReducer from './redux/accountReducer';
 import characterReducer from './redux/characterReducer';
+import eventReducer from './redux/eventReducer'
 import freeCompanyReducer from './redux/freeCompanyReducer';
-import thunkReducer from './redux/thunkReducer';
 import modalReducer from './redux/modalReducer';
-import accountReducer from './redux/accountReducer'
+import thunkReducer from './redux/thunkReducer';
 
 export const RAILS_BASE_URL = "http://localhost:3000/api/v1/"
 export const FFXIV_API_BASE_URL = "https://xivapi.com/"
@@ -18,10 +19,11 @@ export const FFXIV_API_BASE_URL = "https://xivapi.com/"
 
 const rootReducer = combineReducers({
     account: accountReducer,
-    character: characterReducer,
+    characters: characterReducer,
+    events: eventReducer,
     freeCompany: freeCompanyReducer,
-    thunk: thunkReducer,
-    modal: modalReducer
+    modal: modalReducer,
+    thunk: thunkReducer
 })
 
 const store = createStore(rootReducer, 
