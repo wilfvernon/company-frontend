@@ -5,7 +5,7 @@ const defaultState={
 const characterReducer = (prevState=defaultState, action) => {
     switch (action.type) {
         case "CHARACTER":
-            return {...prevState, userCharacter: action.payload}
+            return {...prevState, userPrimaryCharacter: action.payload}
         default:
             return prevState
     }

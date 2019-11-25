@@ -1,5 +1,5 @@
 import React from 'react'
-import NewEventModal from '../components/NewEventModal'
+import NewEventModal from './NewEventModal'
 import './css/modal.css'
 import { connect } from 'react-redux'
 

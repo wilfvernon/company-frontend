@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import accountReducer from './redux/accountReducer';
 import characterReducer from './redux/characterReducer';
+import contentReducer from './redux/contentReducer'
 import eventReducer from './redux/eventReducer'
 import freeCompanyReducer from './redux/freeCompanyReducer';
 import modalReducer from './redux/modalReducer';
@@ -20,6 +21,7 @@ export const FFXIV_API_BASE_URL = "https://xivapi.com/"
 const rootReducer = combineReducers({
     account: accountReducer,
     characters: characterReducer,
+    content: contentReducer,
     events: eventReducer,
     freeCompany: freeCompanyReducer,
     modal: modalReducer,

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import EventList from './UserEventList'
+import UserEventList from './UserEventList'
+import { fetchContent } from '../redux/actions'
 
 class Calendar extends Component {
 
     componentDidMount(){
-
+        this.props.fetchContent()
     }
 
     render(){
@@ -13,7 +14,7 @@ class Calendar extends Component {
         return (
             <div>
                 <h1>This is the calendar page for {activeUser.username}</h1>
-                <EventList />
+                <UserEventList />
             </div>
         )
     }
@@ -23,4 +24,4 @@ const msp = (state) => ({
     activeUser: state.account.activeUser
 })
 
-export default connect(msp)(Calendar)
+export default connect(msp, { fetchContent })(Calendar)

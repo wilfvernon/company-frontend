@@ -29,15 +29,6 @@ export function fetchFC(id){
     }
 }
 
-//modals
-export const closeModal = () => {
-    return {type: "CLOSE_MODAL"}
-}
-
-export const newEventModal = () => {
-    return {type:"NEW_EVENT_MODAL"}
-}
-
 //events
 export const accountEventsAction = (events) => {
     return {type:"GET_USER_EVENTS", payload: events}
@@ -52,6 +43,19 @@ export const fetchAccountEvents = (id) => {
     }
 }
 
+//content
+export const contentAction = (content) => {
+    return ({type: "ALL_CONTENT", payload: content})
+}
+
+export const fetchContent = () => {
+    return(dispatch) => {
+        fetch(RAILS_BASE_URL + "contents")
+        .then(res=>res.json())
+        .then(content=>dispatch(contentAction(content)))
+    }
+}
+
 //accounts
 
 export const activeAccountAction = (account) => {
@@ -63,7 +67,6 @@ export const usernameAuthFailed = () => {
 }
 
 export function validateUsername(username){
-    console.log(RAILS_BASE_URL + "accounts/validate/" + username)
     return (dispatch) => {
         // dispatch({type: "FETCHING"})
          fetch(RAILS_BASE_URL + "accounts/validate/" + username)
@@ -76,4 +79,13 @@ export function validateUsername(username){
             }
         })
     }
+}
+
+//modals
+export const closeModal = () => {
+    return {type: "CLOSE_MODAL"}
+}
+
+export const newEventModal = () => {
+    return {type:"NEW_EVENT_MODAL"}
 }

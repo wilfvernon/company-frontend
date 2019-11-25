@@ -15,12 +15,14 @@ class UserEventList extends Component {
 
         else {
             return events.map(e=>{
-            const { event, community, time} = e
+            const { name, category, location, time, community } = e
             return(
-                <li>
-                    <h5>{event.name}</h5>
-                    <p>{time}</p>
+                <li key={e.id}>
+                    <h5>{ name }</h5>
+                    <p>{time.date}, {time.start}-{time.end}</p>
                     <p>{community}</p>
+                    <p>{category}</p>
+                    {location?<p>{location}</p>:null}
                 </li>
                 )
             })
