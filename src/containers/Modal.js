@@ -2,6 +2,7 @@ import React from 'react'
 import NewEventModal from './NewEventModal'
 import './css/modal.css'
 import { connect } from 'react-redux'
+import { closeModal } from '../redux/actions'
 
 const Modal = (props) => {
     
@@ -15,6 +16,7 @@ const Modal = (props) => {
     }
     return(
         <div className="modal-container">
+            <h1 onClick={props.closeModal} className="modal-close">x</h1>
             <div className="modal-div">
             {renderModalContent()}
             </div>
@@ -27,4 +29,4 @@ const msp = (state) => ({
     type: state.modal.modalType
 })
 
-export default connect(msp)(Modal)
+export default connect(msp, { closeModal })(Modal)

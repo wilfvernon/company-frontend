@@ -1,0 +1,18 @@
+.banner{
+    padding-top: 16vh;
+    /* margin-top: 0vh; */
+    text-align: end;
+}
+
+.banner h1{
+    background-color: rgba(136, 136, 136, 0.767);
+    color: white;
+    padding-right: 1vw;
+}
+
+.buttons-container{
+    margin: 5vh 2vw 0vh;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+}

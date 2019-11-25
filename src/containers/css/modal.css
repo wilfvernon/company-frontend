@@ -11,10 +11,21 @@
 .modal-div{
     background: rgb(226, 221, 221);
     z-index: 30;
-    position: absolute;
+    margin: auto;
+    margin-top: 10vh;
+    height: 80vh;
+    width: 43vw;
     border-radius: 7px;
-    margin-top: 15vh;
-    margin-left: 25vw;
-    height: 70vh;
-    width: 50vw;
+}
+
+.modal-close{
+    color:rgb(149, 148, 148);
+    position: absolute;
+    margin-left:72vw;
+    margin-top:4.5vh;
+}
+
+.modal-close:hover{
+    color:white;
+    cursor: pointer;
 }

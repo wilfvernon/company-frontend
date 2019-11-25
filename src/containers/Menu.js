@@ -5,10 +5,10 @@ import './css/menu.css'
 
 const Menu = (props) => {
     return (
-    <div className="page-menu">
-        <h1>This is the Menu</h1>
+    <ul className="page-menu">
+        <h1>Menu</h1>
         <h2 onClick={props.newEventModal}>Add an event</h2>
-    </div>
+    </ul>
     )
 }
 
