@@ -18,7 +18,8 @@ class NewEventModal extends Component {
         purpose: "Progression",
         category: "raids",
         community: "",
-        content: null
+        content: null,
+        description: ""
     }
 
 
@@ -38,7 +39,7 @@ class NewEventModal extends Component {
                     setContent={this.setContent}
                 />
             case 2:
-                return <NewEventDescScene/>
+                return <NewEventDescScene description={this.state.description} setEvent={this.setEvent}/>
             case 3:
                 return <PreferredJobScene/>
             default:
@@ -56,6 +57,18 @@ class NewEventModal extends Component {
         this.setState(prevProps=>({
             scene: prevProps.scene - 1
         }));
+    }
+
+    eventBody = () => {
+        const { name, start, end, date, location, purpose, category, community, content, description } = this.state 
+        return {
+            event: { name, start, end, date, location, purpose, category, community, content, description },
+            eventMemberId: 1
+        }
+    }
+
+    postEvent = () => {
+
     }
 
     bannerStyle = () => ({
@@ -81,7 +94,8 @@ class NewEventModal extends Component {
 }
 
 const msp = (state) => ({
-    allContent: state.content.all
+    allContent: state.content.all,
+    user: state.characters.userPrimaryCharacter
 })
 
 export default connect(msp)(NewEventModal)
