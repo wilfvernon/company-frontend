@@ -8,10 +8,8 @@ class NewEventDescScene extends Component {
     }
 
     render() { 
-        console.log(this.props)
         return (
             <div className="form-container">
-                <label>Description</label>
                 <textarea id="description" name="description" placeholder="Put a description here" onChange={this.handleInput} value={this.props.description}/>
             </div>
         );

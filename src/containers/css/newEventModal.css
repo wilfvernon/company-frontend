@@ -11,8 +11,34 @@
 }
 
 .buttons-container{
-    margin: 5vh 2vw 0vh;
+    margin: 2vh 2vw 0vh;
     display: flex;
     flex-flow: row-reverse;
     justify-content: space-between;
+}
+.sub-banner{
+    margin-top: -2.75vh;
+    padding: 2.4%;
+    color: white;
+    background-color: rgba(54, 69, 79, 0.842);
+    font-weight: bold;
+}
+
+.success-banner{
+    margin-top: -2.75vh;
+    padding: 2.4%;
+    color: white;
+    background-color: rgba(0, 128, 0, 0.685);
+    font-weight: bold;
+}
+
+.form-errors{
+    margin-top: -2.8vh;
+    padding: 1%;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.664)
+}
+
+.form-errors span{
+    font-weight: bold;
 }

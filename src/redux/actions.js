@@ -43,6 +43,10 @@ export const fetchAccountEvents = (id) => {
     }
 }
 
+export const eventPostAction = (e) => {
+    return {type:"EVENT_POST", payload: e}
+}
+
 //content
 export const contentAction = (content) => {
     return ({type: "ALL_CONTENT", payload: content})
