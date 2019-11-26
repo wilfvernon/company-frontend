@@ -19,7 +19,7 @@ class UserEventList extends Component {
             return(
                 <li key={e.id}>
                     <h5>{ name }</h5>
-                    <p>{time.date}, {time.start}-{time.end}</p>
+                    <p>{time.dateString}, {time.start}-{time.end}</p>
                     <p>{community}</p>
                     <p>{category}</p>
                     {location?<p>{location}</p>:null}

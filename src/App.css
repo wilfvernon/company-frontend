@@ -1,11 +1,14 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  min-height: 100vh;
 }
 
 .flex-main {
   display: flex;
   flex-direction: row;
   background-color: #8D909B;
+  min-height: 85vh;
+  height: 100%;
 }
 
 textarea {

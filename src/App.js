@@ -25,6 +25,7 @@ class App extends React.Component {
 
   render(){
     return (
+      <div className="App">
       <Router>
         <Switch>
           <Route path="/login">{this.props.activeUser?<Redirect to="/calendar"/>:<Login/>}</Route>
@@ -47,6 +48,7 @@ class App extends React.Component {
           </Route>
         </Switch>
       </Router>
+      </div>
     );
     }
 }
