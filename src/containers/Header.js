@@ -4,7 +4,9 @@ import './css/header.css'
 const Header = () => {
     return (
         <div className="page-header">
-            <h1>This is the Header</h1>
+            <img src="company_clear.png" alt="logo"/>
+            <img src="ffxiv.png" alt="ffxiv"/>
+            <div className="currentChar"></div>
         </div>
     )
 }

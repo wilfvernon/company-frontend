@@ -48,7 +48,6 @@ class NewEventInfoScene extends Component {
     }
 
     fetchCommunityOptions = () => {
-        console.log("firing")
         fetch(RAILS_BASE_URL + "/characters/" + this.props.event.character.id + "/communities")
         .then(res=>res.json())
         .then(comms=> { this.setState({

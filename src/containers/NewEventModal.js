@@ -155,7 +155,6 @@ class NewEventModal extends Component {
             body: JSON.stringify(this.eventBody())
         }).then(res=>res.json())
         .then(res=>{
-            console.log(res)
             if(res.valid){
                 this.props.eventPostAction(res.event)
                 this.setState({

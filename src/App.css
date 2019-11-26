@@ -9,12 +9,10 @@
   background-color: #8D909B;
   min-height: 85vh;
   height: 100%;
+  width: 100%;
+  /* box-shadow: 0px 0px 20px 0px black inset; */
 }
 
 textarea {
   resize: none
-}
-
-.App Menu{
-  height:100%;
 }

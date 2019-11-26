@@ -16,8 +16,9 @@ class CommunityShow extends Component {
     }
 
     render(){
+        console.log(this.community)
         return(
-        this.state.community?<h1>{this.state.community["FreeCompany"]["Name"]}</h1>:<h1>Nope</h1>
+        this.state.community?<h1>{this.state.community["FreeCompany"]["Name"]}</h1>:<h1>Loading</h1>
         )
     }
 }
