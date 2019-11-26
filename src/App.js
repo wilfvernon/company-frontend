@@ -55,7 +55,6 @@ class App extends React.Component {
 const msp = (state) => ({
   modal: state.modal.modal,
   activeUser: state.account.activeUser
-  // userPrimaryCharacter: state.character.userPrimaryCharacter
 })
 
 export default connect(msp)(App);

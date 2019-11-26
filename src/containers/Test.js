@@ -22,7 +22,7 @@ const Test = (props) => {
 
 const msp = (state) => {
     return {
-      character: state.characters.userPrimaryCharacter,
+      character: state.characters.accountPrimary,
       thunking: state.thunk.thunking,
       fc: state.freeCompany.freeCompany
     }

@@ -73,7 +73,8 @@ export function validateUsername(username){
         .then(res=>res.json())
         .then(res=>{
             if(res.valid){
-                dispatch(activeAccountAction(res.account))
+                const { account, characters, communities } = res
+                dispatch(activeAccountAction({ account, characters, communities }))
             } else {
                 dispatch(usernameAuthFailed())
             }

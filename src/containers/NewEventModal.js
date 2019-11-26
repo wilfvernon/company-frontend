@@ -3,7 +3,7 @@ import NewEventInfoScene from '../components/NewEventInfoScene'
 import NewEventDescScene from '../components/NewEventDescScene'
 import PreferredJobScene from '../components/PreferredJobScene'
 import { connect } from 'react-redux'
-import { FFXIV_API_BASE_URL } from '../index'
+import { FFXIV_API_BASE_URL, RAILS_BASE_URL } from '../index'
 import './css/newEventModal.css'
 
 class NewEventModal extends Component {
@@ -18,8 +18,9 @@ class NewEventModal extends Component {
         purpose: "Progression",
         category: "raids",
         community: "",
-        content: null,
-        description: ""
+        content: "",
+        description: "",
+        character: ""
     }
 
 
@@ -30,11 +31,11 @@ class NewEventModal extends Component {
     }
 
     getScene = () => {
-        const { scene, name, start, end, date, location, purpose, category, community, content } = this.state
+        const { scene, name, start, end, date, location, purpose, category, community, content, character } = this.state
         switch (scene) {
             case 1:
                 return <NewEventInfoScene 
-                    event={{ name, start, end, date, location, purpose, category, community, content }} 
+                    event={{ name, start, end, date, location, purpose, category, community, content, character }} 
                     setEvent={this.setEvent} 
                     setContent={this.setContent}
                 />
@@ -60,15 +61,25 @@ class NewEventModal extends Component {
     }
 
     eventBody = () => {
-        const { name, start, end, date, location, purpose, category, community, content, description } = this.state 
+        const { name, start, end, date, location, purpose, category, community, content, description, character } = this.state 
         return {
-            event: { name, start, end, date, location, purpose, category, community, content, description },
-            eventMemberId: 1
+            event: { name, start, end, date, location, purpose, category, description },
+            eventCharacterId: character.id,
+            eventCommunityId: community.id,
+            eventContentId: content.id
         }
     }
 
     postEvent = () => {
-
+        fetch(RAILS_BASE_URL + "/events", {
+            method: "POST",
+            headers: {
+                "Accept":"application/json",
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(this.eventBody())
+        }).then(res=>res.json)
+        .then(console.log)
     }
 
     bannerStyle = () => ({
@@ -77,7 +88,6 @@ class NewEventModal extends Component {
     })
 
     render(){
-        console.log(this.state)
         return (
             <div>
                 <div className="banner" style={this.bannerStyle()}>
@@ -95,7 +105,7 @@ class NewEventModal extends Component {
 
 const msp = (state) => ({
     allContent: state.content.all,
-    user: state.characters.userPrimaryCharacter
+    userCharacter: state.characters.accountPrimary
 })
 
 export default connect(msp)(NewEventModal)

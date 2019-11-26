@@ -10,7 +10,7 @@ import accountReducer from './redux/accountReducer';
 import characterReducer from './redux/characterReducer';
 import contentReducer from './redux/contentReducer'
 import eventReducer from './redux/eventReducer'
-import freeCompanyReducer from './redux/freeCompanyReducer';
+import communityReducer from './redux/communityReducer';
 import modalReducer from './redux/modalReducer';
 import thunkReducer from './redux/thunkReducer';
 
@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
     characters: characterReducer,
     content: contentReducer,
     events: eventReducer,
-    freeCompany: freeCompanyReducer,
+    communities: communityReducer,
     modal: modalReducer,
     thunk: thunkReducer
 })

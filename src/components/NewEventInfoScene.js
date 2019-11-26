@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/newEventScene.css'
+import { RAILS_BASE_URL } from '../index'
  
 class NewEventInfoScene extends Component {
+
+    state = {
+        communities: []
+    }
 
     handleChange = (event) => {
         this.props.setEvent(event.target.name, event.target.value)
@@ -18,14 +23,49 @@ class NewEventInfoScene extends Component {
         this.props.setEvent("content", content);
     }
 
+    handleCharacterChange = (event) => {
+        const id = event.target.value
+        const character = this.props.userCharacters.find(character => character.id === +(id))
+        this.props.setEvent("character", character)
+    }
+
+    handleCommunityChange = (event) => {
+        const id = event.target.value
+        const community = this.props.userCommunities.find(community => community.id === +(id))
+        this.props.setEvent("community", community)
+    }
+
     renderContentOptions = () => {
         return this.props.allContent[this.props.event.category].map(content =>{
             return <option key={content.id} value={content.id}>{content.name}</option>
         })
     }
 
+    renderCharacterOptions = () => {
+        return this.props.userCharacters.map(character =>{
+            return <option key={character.id} value={character.id}>{character.name}</option>
+        })
+    }
+
+    fetchCommunityOptions = () => {
+        console.log("firing")
+        fetch(RAILS_BASE_URL + "/characters/" + this.props.event.character.id + "/communities")
+        .then(res=>res.json())
+        .then(comms=> { this.setState({
+                    communities: comms
+                })
+            }
+        )
+    }
+
+    renderCommunityOptions = () => {
+        return this.state.communities.map(community =>{
+            return <option key={community.id} value={community.id}>{community.name}</option> 
+        })     
+    }
+
     render() { 
-        const { name, start, end, date, location, category, purpose, community, content } = this.props.event
+        const { name, start, end, date, location, category, purpose, community, content, character } = this.props.event
         return (
             <form className="form-container">
                 <div className="form">
@@ -75,13 +115,26 @@ class NewEventInfoScene extends Component {
                             </select>
                         </div>
                         <div>
-                            <label>Community:</label>
-                            <select name="community" value={community} onChange={this.handleChange} required>
-                                <option value="None">None</option>
-                                <option value="Grassroots">Grassroots</option>
-                            </select> 
+                            <label>Character:</label>
+                            <select name="character" value={character.id} onChange={this.handleCharacterChange} required>
+                                <option>--</option>
+                                {this.renderCharacterOptions()}
+                            </select>
                         </div>
-                        <div><label style={{color: "rgb(226, 221, 221)"}}>Good job finding this</label></div>
+                        <div>
+                            <label>Community:</label>
+                            <select name="community" value={community.id} onChange={this.handleCommunityChange} required>
+                                <option value="None">None{character?null:" (Please Select a Character)"}</option>
+                                {character?
+                                    this.state.communities.length?
+                                        this.renderCommunityOptions()
+                                        :
+                                        this.fetchCommunityOptions()
+                                    : null
+                                }
+                                
+                            </select> 
+                        </div>                      
                     </div>
                 </div>
             </form>
@@ -90,7 +143,9 @@ class NewEventInfoScene extends Component {
 }
 
 const msp = (state) => ({
-    allContent: state.content
+    allContent: state.content,
+    userCharacters: state.characters.account,
+    userCommunities: state.communities.account
 })
  
 export default connect(msp)(NewEventInfoScene);
