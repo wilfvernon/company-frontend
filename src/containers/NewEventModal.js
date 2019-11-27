@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import NewEventInfoScene from '../components/NewEventInfoScene'
 import NewEventDescScene from '../components/NewEventDescScene'
 import NewEventConfirmedScene from '../components/NewEventConfirmedScene'
+import ModalSubBanner from '../components/ModalSubBanner'
 // import PreferredJobScene from '../components/PreferredJobScene'
 import { connect } from 'react-redux'
 import { eventPostAction, closeModal } from '../redux/actions'
@@ -47,7 +48,6 @@ class NewEventModal extends Component {
                     />
                     <div className="buttons-container">
                         <button onClick={this.incrementScene}>Next</button>
-                        <div></div>
                     </div>
                 </Fragment>
 
@@ -81,15 +81,20 @@ class NewEventModal extends Component {
     renderSubBanner = () => {
         switch (this.state.scene) {
             case 1:
-                return <div className="sub-banner"><p>Fill in the details for your event:</p></div>
+                 if(!this.state.errorKeys.length){
+                    return <ModalSubBanner class="sub-banner" text={()=><p>Fill in the details for your event:</p>}/>
+                 }else{
+                    this.renderErrors()
+                    break;
+                 }
             case 2:
-                return <div className="sub-banner"><p>Add a description:</p></div>
+                return <ModalSubBanner class="sub-banner" text={()=><p>Add a description:</p>}/>
             case 3:
                 return (
                     this.state.postValid ? 
-                    <div className="success-banner"><p>Your event has been succesfully created!</p></div> 
+                    <ModalSubBanner class="success-banner" text={()=><p>Your event has been succesfully created!</p>}/>
                     : 
-                    <div className="form-errors"><p>Something went wrong... Please close this form and try again.</p></div>
+                    <ModalSubBanner class="failure-banner" text={()=><p>Something went wrong... Please close this form and try again.</p>}/>
                 )
             default:
                 break;
@@ -97,9 +102,10 @@ class NewEventModal extends Component {
     }
     renderErrors = () => {
         return (
-        <div className="form-errors">
-            <p>Some required fields are blank: <br/><span>{this.state.errorKeys.join(", ")}</span></p>
-        </div>
+        <ModalSubBanner 
+            class="failure-banner" 
+            text={()=><p>Some required fields are blank: <br/><span>{this.state.errorKeys.join(", ")}</span></p>}
+        />
         )
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { validateUsername } from '../redux/actions'
+import './css/loginForm.css'
 
 class LoginForm extends Component {
 
@@ -22,10 +23,9 @@ class LoginForm extends Component {
     render(){
         return(
             <div>
-               <h3>Login Form</h3>
-               <form onSubmit={this.handleSubmit}>
-                   <input name="username" placeholder="username" value={this.state.userInput} onChange={this.handleChange}/>
-                   <input type="submit"/>
+               <form className="login-form-form" onSubmit={this.handleSubmit}>
+                   <input name="username" placeholder="username" value={this.state.userInput} type="text" onChange={this.handleChange}/>
+                   <input type="submit" value="Log In"/>
                </form>
                {this.props.authenticated === false ? <h4>Uh-oh! No account by that name!</h4>:null}
                {this.props.activeUser?<h4>Welcome {this.props.activeUser.username}</h4>:null}

@@ -4,7 +4,7 @@ import './css/communityShowProfile.css'
  
 class CommunityShowProfile extends Component {
     render() { 
-        const { community, api_community } = this.props
+        const { api_community } = this.props
         return (
             <div className="community-show-profile">
                 <div id="api-profile">

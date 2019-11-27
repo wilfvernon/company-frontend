@@ -1,5 +1,6 @@
 import React from 'react'
 import NewEventModal from './NewEventModal'
+import NewAccountModal from './NewAccountModal'
 import './css/modal.css'
 import { connect } from 'react-redux'
 import { closeModal } from '../redux/actions'
@@ -10,6 +11,8 @@ const Modal = (props) => {
         switch (props.type) {
             case "EventNew":
                 return <NewEventModal/>
+            case "AccountNew":
+                return <NewAccountModal/>
             default:
                 break;
         }

@@ -27,13 +27,12 @@ class App extends React.Component {
     return (
       <div className="App">
       <Router>
+      {this.props.modal?<Modal/>:null}
         <Switch>
           <Route path="/login">{this.props.activeUser?<Redirect to="/calendar"/>:<Login/>}</Route>
           {this.props.activeUser? null : <Route path="/"><Redirect to="/login"/></Route>}
           <Route exact path="/">{this.props.activeUser?<Redirect to="/calendar"/>:<Redirect to="/login"/>}</Route>
-
           <Route>
-            {this.props.modal?<Modal/>:null}
             <Header/>
             <div className="flex-main">
             <Menu/>

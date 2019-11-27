@@ -94,3 +94,7 @@ export const closeModal = () => {
 export const newEventModal = () => {
     return {type:"NEW_EVENT_MODAL"}
 }
+
+export const newAccountModal = () => {
+    return {type:"NEW_ACCOUNT_MODAL"}
+}

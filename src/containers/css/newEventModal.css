@@ -32,13 +32,13 @@
     font-weight: bold;
 }
 
-.form-errors{
+.failure-banner{
     margin-top: -2.8vh;
     padding: 1%;
     color: white;
     background-color: rgba(255, 0, 0, 0.664)
 }
 
-.form-errors span{
+.failure-banner span{
     font-weight: bold;
 }

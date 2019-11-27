@@ -1,0 +1,44 @@
+.login-page{
+    background-image: url("/company_front_page_clear.png");
+    background-color: #36454F;
+    background-position: 25% 45%;
+    height: 100vh;
+}
+
+.login-page-invalid{
+    background-image: url("/company_front_page_clear.png");
+    background-color: #ff5252;
+    background-position: 25% 45%;
+    height: 100vh;
+}
+
+.login-form{
+    padding-top: 8vh;
+    margin-left: 75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.login-form img{
+    height:30vh;
+    width:30vh;
+}
+
+#sign-up-text{
+    margin-top: 10vh;
+    margin-left:-6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sign-up-link{
+    font-weight: bold;
+}
+
+#sign-up-link:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
