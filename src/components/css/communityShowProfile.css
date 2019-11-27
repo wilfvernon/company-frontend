@@ -1,0 +1,11 @@
+.community-show-profile{
+    margin: 1vh 2vw 1vh 1vw;
+    background-color: #AAADC4;
+    width: 53vw;
+    min-height: 69vh;
+}
+
+#api-profile{
+    margin: -1vh 0 0 10vw;
+    color: #36454F
+}

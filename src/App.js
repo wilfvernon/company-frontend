@@ -29,7 +29,7 @@ class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/login">{this.props.activeUser?<Redirect to="/calendar"/>:<Login/>}</Route>
-          {this.props.activeUser? null : <Route path="/"><Redirect to="login"/></Route>}
+          {this.props.activeUser? null : <Route path="/"><Redirect to="/login"/></Route>}
           <Route exact path="/">{this.props.activeUser?<Redirect to="/calendar"/>:<Redirect to="/login"/>}</Route>
 
           <Route>

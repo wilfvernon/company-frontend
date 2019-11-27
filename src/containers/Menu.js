@@ -31,8 +31,8 @@ class Menu extends Component {
     renderCommunities = () => {
         return this.props.communities.map(community=>{
             return(
-                <Link to={"/communities/" + community.id}>
-                    <h4 key={community.id}>
+                <Link key={community.id} to={"/communities/" + community.id}>
+                    <h4>
                         <div className="community-image">
                             {community.category === "FC" ? 
                                 this.communityImageRender(community)
