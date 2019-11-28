@@ -28,6 +28,9 @@ class NewEventModal extends Component {
         postValid: null
     }
 
+    componentDidMount=()=>{
+        this.setState({character: this.props.userCharacter})
+    }
 
     setEvent = (key, value) => {
         this.setState({ 

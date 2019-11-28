@@ -87,6 +87,13 @@ class Menu extends Component {
                 : null}
             </div>
             <hr/>
+            <div className="category">
+                <Link to="/communities/16"><h2>Grassroots</h2></Link>
+            </div>
+            <hr/>
+            <div className="category">
+                <Link to="/events/33"><h2>Event</h2></Link>
+            </div>
         </div>
         )
     }

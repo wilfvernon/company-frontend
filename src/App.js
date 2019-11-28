@@ -8,6 +8,7 @@ import Calendar from './containers/Calendar'
 import Menu from './containers/Menu'
 import Header from './containers/Header'
 import CommunityShow from './containers/CommunityShow'
+import EventShow from './containers/EventShow'
 import Modal from './containers/Modal'
 import {
   BrowserRouter as Router,
@@ -21,6 +22,10 @@ class App extends React.Component {
 
   renderCommunityShow = (routerProps) => {
     return <CommunityShow id={routerProps.match.params.id}/>
+  }
+
+  renderEventShow = (routerProps) => {
+    return <EventShow id={routerProps.match.params.id}/>
   }
 
   render(){

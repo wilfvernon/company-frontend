@@ -15,7 +15,6 @@ class CommunityShowHeader extends Component {
     }
 
     render() { 
-        console.log(this.props)
         const { community, api_community } = this.props
         return (
             <div className="community-show-header">

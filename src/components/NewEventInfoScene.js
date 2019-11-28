@@ -9,6 +9,10 @@ class NewEventInfoScene extends Component {
         communities: []
     }
 
+    componentDidMount=()=>{
+        this.fetchCommunityOptions()
+    }
+
     handleChange = (event) => {
         this.props.setEvent(event.target.name, event.target.value)
     }
@@ -43,12 +47,12 @@ class NewEventInfoScene extends Component {
 
     renderCharacterOptions = () => {
         return this.props.userCharacters.map(character =>{
-            return <option key={character.id} value={character.id}>{character.name}</option>
+            return <option key={character.id} name={character.id} value={character.id}>{character.name}</option>
         })
     }
 
     fetchCommunityOptions = () => {
-        fetch(RAILS_BASE_URL + "/characters/" + this.props.event.character.id + "/communities")
+        fetch(RAILS_BASE_URL + "characters/" + this.props.event.character.id + "/communities")
         .then(res=>res.json())
         .then(comms=> { this.setState({
                     communities: comms
@@ -116,7 +120,6 @@ class NewEventInfoScene extends Component {
                         <div>
                             <label>Character:</label>
                             <select name="character" value={character.id} onChange={this.handleCharacterChange} required>
-                                <option>--</option>
                                 {this.renderCharacterOptions()}
                             </select>
                         </div>

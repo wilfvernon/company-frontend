@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchAccountEvents } from '../redux/actions'
+import { Link } from 'react-router-dom'
  
 class UserEventList extends Component {
 
@@ -17,13 +18,15 @@ class UserEventList extends Component {
             return events.map(e=>{
             const { name, category, location, time, community } = e
             return(
-                <li key={e.id}>
-                    <h5>{ name }</h5>
-                    <p>{time.dateString}, {time.start}-{time.end}</p>
-                    <p>{community}</p>
-                    <p>{category}</p>
-                    {location?<p>{location}</p>:null}
-                </li>
+                <Link to={"/events/" + e.id} key={e.id}>
+                    <li >
+                        <h5>{ name }</h5>
+                        <p>{time.dateString}, {time.start}-{time.end}</p>
+                        <p>{community}</p>
+                        <p>{category}</p>
+                        {location?<p>{location}</p>:null}
+                    </li>
+                </Link>
                 )
             })
         }

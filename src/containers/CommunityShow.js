@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
+import { connect } from 'react-redux'
 import CommunityShowHeader from '../components/CommunityShowHeader'
 import CommunityShowProfile from '../components/CommunityShowProfile'
+import MemberList from '../components/MemberList'
 import UpcomingEvents from './UpcomingEvents'
 import './css/communityShow.css'
 
@@ -9,16 +11,17 @@ class CommunityShow extends Component {
 
     state={
         community: null,
-        api_community: null
+        api_community: null,
+        members: null
     }
 
     componentDidMount(){
-        console.log(this.props.id)
         fetch(RAILS_BASE_URL + "communities/" + this.props.id)
         .then(res=>res.json())
         .then((fc)=>{
             this.setState({
-            community: fc
+            community: fc.community,
+            members: fc.characters
         })
         if(this.state.community.category === "FC"){
             fetch(FFXIV_API_BASE_URL + "freecompany/" + this.state.community.api_id)
@@ -27,12 +30,27 @@ class CommunityShow extends Component {
             }}   
         )
     }
+
+    joinCommunity=()=>{
+        fetch(RAILS_BASE_URL + 'community_characters', {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                community_id: this.state.community.id,
+                character_id: this.props.activeCharacter.id
+            })
+        }).then(this.setState({
+            members: [...this.state.members, this.props.activeCharacter]
+        }))
+    }
             
     render(){
-        const { community, api_community } = this.state
-        console.log(this.state)
+        const { community, api_community, members } = this.state
         return(
-        community?
+        community && members?
         <div className="community-show">
             <CommunityShowHeader community={community} api_community={api_community}/>
             <div className="community-show-main">
@@ -40,6 +58,7 @@ class CommunityShow extends Component {
                 <div className="community-main-info">
                     <CommunityShowProfile community={community} api_community={api_community}/>
                     <UpcomingEvents/>
+                    <MemberList join={this.joinCommunity} members={members}/>
                 </div>
             </div>
         </div>
@@ -49,4 +68,8 @@ class CommunityShow extends Component {
     }
 }
 
-export default CommunityShow
+const msp = (state) => ({
+    activeCharacter: state.characters.accountPrimary
+})
+
+export default connect(msp)(CommunityShow)
