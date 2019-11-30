@@ -21,7 +21,7 @@ class NewAccountModal extends Component {
             case 1:
                 if(this.state.valid === null) return <ModalSubBanner class="sub-banner" text={()=><p>Enter a username:</p>}/>
                 else if(this.state.valid) return <ModalSubBanner class="success-banner" text={()=><p>That username is available</p>}/>
-                else return <ModalSubBanner class="failure-banner" text={()=><p><span>Sorry, that username is taken</span></p>}/> 
+                else return <ModalSubBanner class="failure-banner" text={()=><p><span>Sorry, that username is unavailable</span></p>}/> 
             case 2:
                 if(this.state.postValid === null) return  <ModalSubBanner class="sub-banner" text={()=><p>Connect a character:</p>}/>
                 else if(this.state.postValid) return <ModalSubBanner class="success-banner" text={()=><p>Account successfully created!</p>}/>
@@ -65,13 +65,6 @@ class NewAccountModal extends Component {
 
     setParentState = (obj) => {
         this.setState(obj)
-        if(obj.username){
-           fetch(RAILS_BASE_URL + "accounts/validate_new/" + obj.username)
-           .then(res=>res.json())
-           .then(res=>{
-               this.setState({valid: res.valid})
-           })
-        }
     }
 
     incrementScene = () => {
