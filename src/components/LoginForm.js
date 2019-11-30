@@ -27,7 +27,7 @@ class LoginForm extends Component {
                    <input name="username" placeholder="username" value={this.state.userInput} type="text" onChange={this.handleChange}/>
                    <input type="submit" value="Log In"/>
                </form>
-               {this.props.authenticated === false ? <h4>Uh-oh! No account by that name!</h4>:null}
+               {this.props.authenticated === false ? <h4 id="auth-fail-text">Uh-oh! No account by that name!</h4>:null}
                {this.props.activeUser?<h4>Welcome {this.props.activeUser.username}</h4>:null}
             </div>
         )

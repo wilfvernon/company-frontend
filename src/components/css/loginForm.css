@@ -30,3 +30,6 @@
     cursor: pointer;
 }
 
+#auth-fail-text{
+    margin-left: -6vw;
+}

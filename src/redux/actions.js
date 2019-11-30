@@ -43,6 +43,19 @@ export const fetchAccountEvents = (id) => {
     }
 }
 
+export const upcomingEventsAction = (events) => {
+    return {type: "UPCOMING_EVENTS", payload: events}
+}
+
+export const fetchUpcomingEvents = (id) => {
+    return dispatch => {
+        dispatch({type: "FETCHING_UPCOMING_EVENTS"})
+        fetch(RAILS_BASE_URL + "/accounts/" + id + "/upcoming_events")
+        .then(res=>res.json())
+        .then(res=>dispatch(upcomingEventsAction(res)))
+    }
+}
+
 export const eventPostAction = (e) => {
     return {type:"EVENT_POST", payload: e}
 }
