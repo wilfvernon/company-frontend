@@ -27,8 +27,13 @@ class CommunityShow extends Component {
             fetch(FFXIV_API_BASE_URL + "freecompany/" + this.state.community.api_id)
             .then(res=>res.json())
             .then((fc)=>this.setState({api_community: fc["FreeCompany"]}))
-            }}   
+        }else this.setState({api_community: this.dummyApiCommunity()})
+        }   
         )
+    }
+
+    dummyApiCommunity=()=>{
+        return {}
     }
 
     joinCommunity=()=>{
@@ -50,7 +55,7 @@ class CommunityShow extends Component {
     render(){
         const { community, api_community, members } = this.state
         return(
-        community && members?
+        api_community && members?
         <div className="community-show">
             <CommunityShowHeader community={community} api_community={api_community}/>
             <div className="community-show-main">

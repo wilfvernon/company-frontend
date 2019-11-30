@@ -3,12 +3,21 @@ import { connect } from 'react-redux'
 import { newEventModal } from '../redux/actions'
 import { Link } from 'react-router-dom'
 import './css/menu.css'
+import { RAILS_BASE_URL } from "../index"
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
+import SearchResults from '../components/SearchResults'
+
+const searchFetch = (query, controller) => fetch(RAILS_BASE_URL + `/${controller}/search?query=${query}`)
+const debouncedSearchFetch = AwesomeDebouncePromise (searchFetch, 500)
 
 class Menu extends Component {
 
     state={
         events: false,
-        communities: false
+        communities: false,
+        searchResults: [],
+        searchInput: "",
+        searchModel: "communities"
     }
 
     toggleCollapse = (e) => {
@@ -47,12 +56,23 @@ class Menu extends Component {
         })
     }
 
+    handleChange = async event => {
+        event.persist();
+        this.setState({ searchInput: event.target.value })
+        let results = await debouncedSearchFetch(event.target.value, this.state.searchModel)
+        results = await results.json()
+        this.setState({ searchResults: results })
+    }
+
     render(){
         return (
         <div className="page-menu">
             <div className="category">
-                <input id="search-input" type="text" placeholder="Search (not implemented)"/>
+                <input id="search-input" type="text" placeholder="Search" onChange={this.handleChange} value={this.state.searchInput}/>
             </div>
+            {this.state.searchResults.length?
+            <SearchResults results={this.state.searchResults} model={this.state.searchModel}/>
+            :null}
             <hr/>
             <div className="category">
                 <Link to="/calendar"><h2>Calendar</h2></Link>
@@ -85,14 +105,6 @@ class Menu extends Component {
                     {this.renderCommunities()}
                 </ul>
                 : null}
-            </div>
-            <hr/>
-            <div className="category">
-                <Link to="/communities/16"><h2>Grassroots</h2></Link>
-            </div>
-            <hr/>
-            <div className="category">
-                <Link to="/events/33"><h2>Event</h2></Link>
             </div>
         </div>
         )
