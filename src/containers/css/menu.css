@@ -10,7 +10,7 @@
 .page-menu {
     position: fixed;
     height: 100vh;
-    z-index: 2;
+    z-index: 5;
     width: 17%;
     margin-top: -5px;
     color: rgb(255, 254, 254);

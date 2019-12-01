@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux'
 import Test from './containers/Test'
 import Login from './containers/Login'
-import Calendar from './containers/Calendar'
+import UserCalendar from './containers/UserCalendar'
 import Menu from './containers/Menu'
 import Header from './containers/Header'
 import CommunityShow from './containers/CommunityShow'
@@ -19,6 +19,10 @@ import {
 
 
 class App extends React.Component {
+
+  renderUserCalendar = (routerProps) => {
+    return <UserCalendar history={routerProps.history}/>
+  }
 
   renderCommunityShow = (routerProps) => {
     return <CommunityShow id={routerProps.match.params.id}/>
@@ -47,7 +51,7 @@ class App extends React.Component {
             {this.props.menu?<Menu/>:null}
             <div className="flex-main">
             <Switch>
-              <Route path="/calendar" component={Calendar}/>
+              <Route path="/calendar" render={this.renderUserCalendar}/>
               <Route path="/test" component={Test}/>
               <Route path="/communities/:id" render={this.renderCommunityShow}/>
               <Route path="/events/:id" render={this.renderEventShow}/>
