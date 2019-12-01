@@ -15,6 +15,7 @@ class Menu extends Component {
     state={
         events: false,
         communities: false,
+        characters: false,
         searchResults: [],
         searchInput: "",
         searchModel: "communities"
@@ -67,8 +68,8 @@ class Menu extends Component {
     render(){
         return (
         <div className="page-menu">
-            <img id="company-logo" src="/company_clear_reactor.png" alt="company-logo"/>
-                <div id="menu-items">
+            <img id="company-logo" src='/company_clear_reactor.png' alt="active-character"/>
+            <div id="menu-items">
                 <div className="category">
                     <input id="search-input" type="text" placeholder="Search" onChange={this.handleChange} value={this.state.searchInput}/>
                 </div>
@@ -77,10 +78,28 @@ class Menu extends Component {
                 :null}
                 <hr/>
                 <div className="category">
-                    <Link onClick={this.props.toggleMenuAction} to="/calendar"><h2>Calendar</h2></Link>
+                    <div className="header">
+                        <Link onClick={this.props.toggleMenuAction} to="/calendar"><h2>Calendar</h2></Link>
+                    </div>
                 </div>
                 <hr/>
-
+                <div className="category">
+                    <div className="header">
+                        <h2 className="title">Characters</h2>
+                        <h2 id="characters" onClick={this.toggleCollapse} className="expand">
+                            {this.state.characters?"-":"+"}
+                        </h2>
+                    </div>
+                    {this.state.characters?
+                    <ul className="sub-menu">
+                        <div id="active-character-sub-menu">
+                            <p>Logged in with {this.props.activeCharacter.name}</p>
+                            <img id="active-character-image" src={this.props.activeCharacter.profile_image} alt="active-character"/>
+                        </div>
+                    </ul>:
+                    null}
+                </div>
+                <hr/>
                 <div className="category">
                     <div className="header">
                         <h2 className="title">Events</h2>
@@ -115,7 +134,8 @@ class Menu extends Component {
 }
 
 const msp = (state) => ({
-    communities: state.communities.account
+    communities: state.communities.account,
+    activeCharacter: state.characters.accountPrimary
 })
 
 export default connect(msp, { newEventModal, toggleMenuAction })(Menu)

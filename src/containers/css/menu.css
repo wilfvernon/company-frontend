@@ -8,6 +8,7 @@
 }
 
 .page-menu {
+    overflow-y: scroll;
     position: fixed;
     height: 100vh;
     z-index: 5;
@@ -52,7 +53,6 @@ div.page-menu *{
                  1px 1px #212021;
     font-family: "Reactor7";
     font-weight: normal;
-    font-size: 2rem;
   }
 
 #company-logo {
@@ -82,14 +82,20 @@ div.page-menu *{
     align-items: flex-start;
 }
 
+.sub-menu *{
+    font-size: 1.5rem;
+}
+
 .sub-menu h4{
     margin: 0.5vh 0.8vw;
 }
+
 
 .header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: 1.5rem;
 }
 
 .expand:hover{
@@ -146,6 +152,22 @@ div.page-menu *{
 
 .community-name{
     padding-left: 5vh;
+}
+
+#active-character-sub-menu{
+    display: flex;
+    flex-direction: row;
+}
+
+#active-character-sub-menu p{
+    width: 10vw;
+}
+
+#active-character-image{
+    max-height: 6vh;
+    max-width: 6vh;  
+    object-fit: cover;
+    border-radius: 100%
 }
 
 .page-menu a{
