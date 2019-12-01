@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CalendarEvent from '../components/CalendarEvent'
+import UpcomingEvents from './UpcomingEvents'
 import { fetchContent, fetchAccountEvents } from '../redux/actions'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import './css/rbc.css'
+import './css/userCalendar.css'
 
 const localizer = momentLocalizer(moment)
 const components = {
@@ -25,7 +27,8 @@ class UserCalendar extends Component {
             title: event.name,
             start: new Date(event.time.start),
             end: new Date(event.time.end),
-            allDay: false
+            allDay: false,
+            fullEvent: event
         }))
     }
 
@@ -33,23 +36,27 @@ class UserCalendar extends Component {
         const { activeUser, events } = this.props
         return (
             events?
-            <div>
-                <h1>This is the calendar page for {activeUser.username}</h1>
-                <Calendar
-                    components={components}
-                    localizer={localizer}
-                    events={this.compileEventList()}
-                    startAccessor="start"
-                    endAccessor="end"
-                    style={{height: 600, width:900}}
-                    onSelectEvent={e=>this.props.history.push("/events/" + e.id)}
-                    popup={true}
-                />
+            <div className="calendar-page">
+                <div className="calendar-box">
+                    <h1>{activeUser.username}'s Calendar</h1>
+                    <Calendar
+                        components={components}
+                        localizer={localizer}
+                        events={this.compileEventList()}
+                        startAccessor="start"
+                        endAccessor="end"
+                        style={{height: "76vh", width:"62vw"}}
+                        onSelectEvent={e=>this.props.history.push("/events/" + e.id)}
+                        popup={true}
+                    />
+                </div>
+                <UpcomingEvents />
             </div>
             :
             <div>
                 Loading
             </div>
+            
         )
     }
 }

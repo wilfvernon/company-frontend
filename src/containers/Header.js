@@ -6,14 +6,7 @@ import HamburgerMenu from 'react-hamburger-menu'
 
 class Header extends Component{
 
-    state={
-        open: false
-    }
-
     handleClick = () => {
-        this.setState({
-            open: !this.state.open
-        });
         this.props.toggleMenuAction();
     }
 
@@ -22,11 +15,11 @@ class Header extends Component{
             <div className="page-header">
                 <div id="ham">
                     <HamburgerMenu
-                        isOpen={this.state.open}
+                        isOpen={this.props.menuOpen}
                         menuClicked={this.handleClick}
                         width={18}
                         height={15}
-                        strokeWidth={1}
+                        strokeWidth={2}
                         rotate={0}
                         color='white'
                         borderRadius={0}
@@ -39,4 +32,8 @@ class Header extends Component{
     }
 }
 
-export default connect(null, { toggleMenuAction })(Header)
+const msp = (state) => ({
+    menuOpen: state.modal.menu
+})
+
+export default connect(msp, { toggleMenuAction })(Header)

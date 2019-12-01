@@ -68,7 +68,7 @@ class CommunityShow extends Component {
             </div>
         </div>
         :
-        <h1>Loading</h1>
+        <img src="/company_loader.png" alt="company_loader"/>
         )
     }
 }

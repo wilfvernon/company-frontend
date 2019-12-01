@@ -19,7 +19,7 @@ class NewEventModal extends Component {
         date: "",
         location: "",
         purpose: "Progression",
-        category: "raids",
+        category: "Raids",
         community: "",
         content: "",
         description: "",
@@ -147,10 +147,21 @@ class NewEventModal extends Component {
     eventBody = () => {
         const { name, start, end, date, location, purpose, category, community, content, description, character } = this.state 
         return {
-            event: { name, start, end, date, location, purpose, category, description },
+            event: { name, start, end, date, location, purpose, category, description, icon: this.getEventIcon() },
             eventCharacterId: character.id,
             eventCommunityId: community.id,
             eventContentId: content.id
+        }
+    }
+
+    getEventIcon = () => {
+        switch (this.state.category) {
+            case "Savage Raids":
+                return "https://xivapi.com/i/061000/061802.png"
+            case "Raids":
+                return "https://xivapi.com/i/061000/061802.png"
+            default:
+                break;
         }
     }
 

@@ -18,9 +18,9 @@ class EventShow extends Component {
         fetch(RAILS_BASE_URL + "events/" + this.props.id)
         .then(res=>res.json())
         .then(res=>this.setState({
-            event: res.event,
+            event: res,
             members: res.members,
-            content: res.content[0]
+            content: res.content
         }))
     }
 

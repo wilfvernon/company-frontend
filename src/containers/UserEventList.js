@@ -5,10 +5,7 @@ import { Link } from 'react-router-dom'
  
 class UserEventList extends Component {
 
-    componentDidMount(){
-        const { fetchAccountEvents, currentUser } = this.props
-        fetchAccountEvents(currentUser.id)
-    }
+    
 
     renderUserEvents = () => {
         const { loading, events } = this.props

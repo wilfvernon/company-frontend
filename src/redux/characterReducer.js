@@ -1,14 +1,15 @@
 const defaultState={
     account: [],
-    accountPrimary: null
+    accountPrimary: null,
+    accountPrimaryApi: null
 }
 
 const characterReducer = (prevState=defaultState, action) => {
     switch (action.type) {
         case "ACTIVE_ACCOUNT":
             return {...prevState, account: action.payload.characters, accountPrimary: action.payload.characters.find(character=>character.primary)}
-        // case "CHARACTER":
-        //     return {...prevState, accountPrimary: action.payload}
+        case "CHARACTER":
+            return {...prevState, accountPrimaryApi: action.payload}
         default:
             return prevState
     }

@@ -1,7 +1,31 @@
 .upcoming-events-container{
-    background-color: #AAADC4;
-    margin: 1vh 2vw 1vh 1vw;
-    background-color: #AAADC4;
+    z-index: 3;
+    background-color: rgba(207, 207, 207, 0.329);
+    margin: 3vh 2vw 1vh 1.5vw;
+    width: 28vw;
+    height: 87vh;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+
+.upcoming-events-container hr{
+    margin-top: -1.5vh;
+    border: 1px solid rgba(72, 93, 143, 0.575);
     width: 20vw;
-    min-height: 69vh;
+}
+
+.events-container{
+    overflow-y: scroll;
+}
+
+.events-container a:hover{
+    color:rgb(251, 251, 251);
+}
+
+.events-container a{
+    text-decoration: none;
+    color:rgb(87, 181, 209);
 }

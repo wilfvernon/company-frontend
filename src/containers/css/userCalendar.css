@@ -1,0 +1,9 @@
+.calendar-page{
+    display:flex;
+    flex-direction:row;
+}
+
+.calendar-box h1{
+    margin-left: 5vw;
+    color: rgb(255, 255, 255)
+}

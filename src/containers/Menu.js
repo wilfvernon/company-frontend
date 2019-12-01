@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { newEventModal } from '../redux/actions'
+import { newEventModal, toggleMenuAction } from '../redux/actions'
 import { Link } from 'react-router-dom'
 import './css/menu.css'
 import { RAILS_BASE_URL } from "../index"
@@ -40,7 +40,7 @@ class Menu extends Component {
     renderCommunities = () => {
         return this.props.communities.map(community=>{
             return(
-                <Link key={community.id} to={"/communities/" + community.id}>
+                <Link onClick={this.props.toggleMenuAction} key={community.id} to={"/communities/" + community.id}>
                     <h4>
                         <div className="community-image">
                             {community.category === "FC" ? 
@@ -77,7 +77,7 @@ class Menu extends Component {
                 :null}
                 <hr/>
                 <div className="category">
-                    <Link to="/calendar"><h2>Calendar</h2></Link>
+                    <Link onClick={this.props.toggleMenuAction} to="/calendar"><h2>Calendar</h2></Link>
                 </div>
                 <hr/>
 
@@ -118,4 +118,4 @@ const msp = (state) => ({
     communities: state.communities.account
 })
 
-export default connect(msp, { newEventModal })(Menu)
+export default connect(msp, { newEventModal, toggleMenuAction })(Menu)

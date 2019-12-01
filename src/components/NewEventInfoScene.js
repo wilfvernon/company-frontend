@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/newEventScene.css'
 import { RAILS_BASE_URL } from '../index'
+
+const  toCamelCase = (string) => {
+    string = string.replace(/\s+(.)/g, function (match, group) { 
+      return group.toUpperCase()  
+    })
+    return string.charAt(0).toLowerCase()+string.slice(1)
+  }
  
 class NewEventInfoScene extends Component {
 
@@ -40,7 +47,7 @@ class NewEventInfoScene extends Component {
     }
 
     renderContentOptions = () => {
-        return this.props.allContent[this.props.event.category].map(content =>{
+        return this.props.allContent[toCamelCase(this.props.event.category)].map(content =>{
             return <option key={content.id} value={content.id}>{content.name}</option>
         })
     }
@@ -106,8 +113,8 @@ class NewEventInfoScene extends Component {
                         <div>
                             <label>Content Type:</label>
                             <select name="category" value={category} onChange={this.handleChange} required>
-                                <option value="raids">Raid</option>
-                                <option value="savageRaids">Savage Raid</option>
+                                <option value="Raids">Raid</option>
+                                <option value="Savage Raids">Savage Raid</option>
                             </select>
                         </div>
                         <div>

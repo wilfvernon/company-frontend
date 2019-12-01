@@ -87,7 +87,8 @@ class NewAccountModal extends Component {
                 name: character["Name"],
                 profile_image: character["Avatar"],
                 server: character["Server"],
-                api_id: character["ID"]
+                api_id: character["ID"],
+                avatar: character["Portrait"]
             }:null
         }
     }

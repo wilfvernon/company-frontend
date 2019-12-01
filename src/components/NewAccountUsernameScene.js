@@ -22,7 +22,7 @@ class NewAccountUsernameScene extends Component {
         this.setState({usernameInput: event.target.value})     
         let valid = await debouncedFetchAccount(event.target.value)
         valid = await valid.json()
-        this.props.setParentState({ valid: valid["valid"] })
+        this.props.setParentState({ username: event.target.value, valid: valid["valid"] })
     }
 
     render() { 
