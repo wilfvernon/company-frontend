@@ -104,6 +104,10 @@ export const closeModal = () => {
     return {type: "CLOSE_MODAL"}
 }
 
+export const toggleMenuAction = () => {
+    return {type: "TOGGLE_MENU"}
+}
+
 export const newEventModal = () => {
     return {type:"NEW_EVENT_MODAL"}
 }

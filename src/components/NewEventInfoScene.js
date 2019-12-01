@@ -91,7 +91,7 @@ class NewEventInfoScene extends Component {
                         </div>
                         <div>
                             <label>Location:</label>
-                            <input name="location" type="text" value={location} onChange={this.handleChange} placeholder="Category"/>
+                            <input name="location" type="text" value={location} onChange={this.handleChange} placeholder="Location"/>
                         </div>
                     </div>
                     <div className="form-column">

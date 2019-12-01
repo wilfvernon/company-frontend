@@ -1,12 +1,62 @@
+@font-face {
+    font-family: 'reactor7regular';
+    src: url('../../fonts/reactor7/reactor7-webfont.woff2') format('woff2'),
+         url('../../fonts/reactor7/reactor7-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .page-menu {
-    background-color: #5B618A;
+    position: fixed;
+    height: 100vh;
+    z-index: 2;
     width: 17%;
-    margin-top: 0vh;
+    margin-top: -5px;
     color: rgb(255, 254, 254);
     margin-bottom: 0vh;
     /* margin-left: 0; */
     padding: 2vh 0.8vw;
     /* box-shadow: 0 0 20px 0 black inset; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px #424542;
+  box-shadow: 1px 1px #e7dfe7,
+              -1px -1px #e7dfe7,
+              1px -1px #e7dfe7,
+              -1px 1px #e7dfe7,
+              0 -2px #9c9a9c,
+              -2px 0 #7b757b,
+              0 2px #424542;
+  width: 18vw;
+  
+  background: #04009d;
+  background: -moz-linear-gradient(top,  #04009d 0%, #06004d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#04009d), color-stop(100%,#06004d));
+  background: -webkit-linear-gradient(top,  #04009d 0%,#06004d 100%);
+  background: -o-linear-gradient(top,  #04009d 0%,#06004d 100%);
+  background: -ms-linear-gradient(top,  #04009d 0%,#06004d 100%);
+  background: linear-gradient(to bottom,  #04009d 0%,#06004d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04009d', endColorstr='#06004d',GradientType=0 );
+
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 0px 7px 0 0px;
+}
+
+div.page-menu *{
+    color: #eff1ff;
+    text-shadow: 2px 2px #212421,
+                 1px 1px #212021;
+    font-family: "Reactor7";
+    font-weight: normal;
+    font-size: 2rem;
+  }
+
+#company-logo {
+    max-width: 10vw;
 }
 
 .page-menu h2, .page-menu p {

@@ -1,10 +1,13 @@
 const defaultState={
     modal: false,
-    modalType: ""
+    modalType: "",
+    menu: false
 }
 
 const modalReducer= (prevState=defaultState, action) => {
     switch (action.type) {
+        case "TOGGLE_MENU":
+            return {...prevState, menu: !prevState.menu }
         case "NEW_EVENT_MODAL":
             return {...prevState, modalType: "EventNew", modal:true}
         case "NEW_ACCOUNT_MODAL":

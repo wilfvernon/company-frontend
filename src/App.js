@@ -31,6 +31,11 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <div id="stars-div">
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+        </div>
       <Router>
       {this.props.modal?<Modal/>:null}
         <Switch>
@@ -39,9 +44,8 @@ class App extends React.Component {
           <Route exact path="/">{this.props.activeUser?<Redirect to="/calendar"/>:<Redirect to="/login"/>}</Route>
           <Route>
             <Header/>
+            {this.props.menu?<Menu/>:null}
             <div className="flex-main">
-            <Menu/>
-
             <Switch>
               <Route path="/calendar" component={Calendar}/>
               <Route path="/test" component={Test}/>
@@ -60,6 +64,7 @@ class App extends React.Component {
 
 const msp = (state) => ({
   modal: state.modal.modal,
+  menu: state.modal.menu,
   activeUser: state.account.activeUser
 })
 

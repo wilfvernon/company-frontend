@@ -67,44 +67,47 @@ class Menu extends Component {
     render(){
         return (
         <div className="page-menu">
-            <div className="category">
-                <input id="search-input" type="text" placeholder="Search" onChange={this.handleChange} value={this.state.searchInput}/>
-            </div>
-            {this.state.searchResults.length?
-            <SearchResults results={this.state.searchResults} model={this.state.searchModel}/>
-            :null}
-            <hr/>
-            <div className="category">
-                <Link to="/calendar"><h2>Calendar</h2></Link>
-            </div>
-            <hr/>
+            <img id="company-logo" src="/company_clear_reactor.png" alt="company-logo"/>
+                <div id="menu-items">
+                <div className="category">
+                    <input id="search-input" type="text" placeholder="Search" onChange={this.handleChange} value={this.state.searchInput}/>
+                </div>
+                {this.state.searchResults.length?
+                <SearchResults results={this.state.searchResults} model={this.state.searchModel}/>
+                :null}
+                <hr/>
+                <div className="category">
+                    <Link to="/calendar"><h2>Calendar</h2></Link>
+                </div>
+                <hr/>
 
-            <div className="category">
-                <div className="header">
-                    <h2 className="title">Events</h2>
-                    <h2 id="events" onClick={this.toggleCollapse} className="expand">
-                        {this.state.events?"-":"+"}
-                    </h2>
+                <div className="category">
+                    <div className="header">
+                        <h2 className="title">Events</h2>
+                        <h2 id="events" onClick={this.toggleCollapse} className="expand">
+                            {this.state.events?"-":"+"}
+                        </h2>
+                    </div>
+                    {this.state.events?
+                    <ul className="sub-menu">
+                        <h4 className="modal-link" onClick={this.props.newEventModal}>Add an event</h4>
+                    </ul>
+                    : null}
                 </div>
-                {this.state.events?
-                <ul className="sub-menu">
-                    <h4 className="modal-link" onClick={this.props.newEventModal}>Add an event</h4>
-                </ul>
-                : null}
-            </div>
-            <hr/>
-            <div className="category">
-                <div className="header">
-                    <h2 className="title">Communities</h2>
-                    <h2 id="communities" onClick={this.toggleCollapse} className="expand">
-                        {this.state.communities?"-":"+"}
-                    </h2>
+                <hr/>
+                <div className="category">
+                    <div className="header">
+                        <h2 className="title">Communities</h2>
+                        <h2 id="communities" onClick={this.toggleCollapse} className="expand">
+                            {this.state.communities?"-":"+"}
+                        </h2>
+                    </div>
+                    {this.state.communities?
+                    <ul className="sub-menu">
+                        {this.renderCommunities()}
+                    </ul>
+                    : null}
                 </div>
-                {this.state.communities?
-                <ul className="sub-menu">
-                    {this.renderCommunities()}
-                </ul>
-                : null}
             </div>
         </div>
         )

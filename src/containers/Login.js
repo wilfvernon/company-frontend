@@ -8,13 +8,7 @@ class Login extends Component {
 
     render(){
     return (
-        <div className={this.props.authenticated === false ?"background-gradient-invalid":"background-gradient"}>
-            <div id="stars-div">
-                <div id='stars'></div>
-                <div id='stars2'></div>
-                <div id='stars3'></div>
-            </div>
-            <div className="login-page">
+        <div className="login-page">
                 <img id="company-front-image" src="/company_front_page_clear.png" alt="company-front"/>
                 <div className="login-form">
                     <img src="/company_clear.png" alt="company"/>
@@ -24,7 +18,6 @@ class Login extends Component {
                         <p onClick={this.props.newAccountModal} id="sign-up-link">Click here to sign up!</p>
                     </div>
                 </div>
-            </div>
         </div>
         )
     }
