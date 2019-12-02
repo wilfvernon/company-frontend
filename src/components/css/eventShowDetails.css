@@ -40,5 +40,16 @@
 }
 
 #content-info{
+    
     margin: 4%
+}
+
+#content-info p{
+    padding: 4%;
+    border-radius: 7px;
+    background-color: rgba(136, 197, 194, 0.603);
+    /* margin: 4%; */
+    height: 20vh;
+    overflow-y: scroll;
+    box-shadow: 0 0 5px 0 rgba(57, 83, 82, 0.603) inset;
 }

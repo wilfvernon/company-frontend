@@ -13,7 +13,8 @@ class EventShow extends Component {
         event: null,
         members: null,
         content: null,
-        view: "details"
+        view: "details",
+        isMember: false
     }
 
     componentDidMount=()=>{
@@ -21,7 +22,8 @@ class EventShow extends Component {
         .then(res=>res.json())
         .then(res=>{this.setState({
             event: res,
-            members: res.members
+            members: res.members,
+            isMember: res.members.map(member=>member.id).includes(this.props.activeCharacter.id)
         })
         return res.content})
         .then(content=>{
@@ -119,9 +121,10 @@ class EventShow extends Component {
                     </div>
                     <div id="event-members-list">
                     <MemberList 
-                        admins={this.state.members} 
-                        members={this.state.members} 
+                        admins={[this.state.event.organiser]} 
+                        members={this.state.members.filter(member=>member.id!==this.state.event.organiser.id)} 
                         join={this.joinEvent}
+                        isMember={this.state.isMember}
                     />
                     </div>
                 </div>

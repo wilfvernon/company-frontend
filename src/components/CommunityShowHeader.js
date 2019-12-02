@@ -14,15 +14,8 @@ class CommunityShowHeader extends Component {
         )
     }
 
-    handleClick = (event) => {
-        event.persist();
-        event.target.disabled = true
-        this.props.join()
-    }
-
     render() { 
-        const { community, api_community, isMember } = this.props
-        console.log(isMember)
+        const { community, api_community } = this.props
         return (
             <div className="community-show-header">
                 <div className="community-img">
@@ -38,9 +31,6 @@ class CommunityShowHeader extends Component {
                         <span id="server">{community.server}</span>
                     </div>
                 </div>
-                
-                {isMember?null:
-                <button onClick={this.handleClick} disabled={false} id="community-join-button">Apply to Join</button>}
             </div>
         );
     }

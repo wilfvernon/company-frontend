@@ -68,8 +68,7 @@ class CommunityShow extends Component {
         api_community && members?
         <div className="community-show">
             <CommunityShowHeader 
-                join={this.joinCommunity} 
-                isMember={isMember} 
+                
                 community={community} 
                 api_community={api_community}
             />
@@ -86,7 +85,12 @@ class CommunityShow extends Component {
                     />
                 </div>
                 <div id="community-member-list">
-                    <MemberList members={members} admins={admins}/>
+                    <MemberList
+                        isMember={isMember}  
+                        members={members} 
+                        admins={admins}
+                        join={this.joinCommunity} 
+                    />  
                 </div>
             </div>
         </div>

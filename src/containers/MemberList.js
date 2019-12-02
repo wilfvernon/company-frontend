@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux'
 import './css/cardList.css'
 import MemberListItem from '../components/MemberListItem';
  
 const MemberList = (props) => {
 
-    const { members, admins } = props
+    const { members, admins, isMember, join } = props
+
+    const handleClick = (event) => {
+        event.persist();
+        event.target.disabled = true
+        join()
+    }
 
     const renderAdmins = () => {
         return admins.map(admin=>{
@@ -26,11 +32,25 @@ const MemberList = (props) => {
     return (
         <div className="card-container">
             <h2>Members</h2>
+            {admins && members?
+            <Fragment>
             <hr/>
+            {isMember?null:
+                <button 
+                onClick={handleClick} 
+                disabled={false} 
+                id="community-join-button">
+                    Apply to Join
+                </button>
+            }        
             <div className="card-list">
                 {renderAdmins()}
                 {renderMembers()}
             </div>
+            </Fragment>
+            :
+            <img className="loading" src="/company_clear.png" alt="loading"/>
+        }
         </div>
     );
 }
