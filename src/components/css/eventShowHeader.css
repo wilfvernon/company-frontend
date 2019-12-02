@@ -1,0 +1,40 @@
+.event-show-header{
+    z-index: 1;
+    margin-left: 2vw;
+    height: 20vh;
+    width: 58vw;
+    border-radius: 7px 7px 0 0;
+    overflow-x: hidden;
+    margin-top: 1vh;
+}
+
+.event-show-header *{
+    z-index: 2
+}
+
+
+#event-show-banner{
+    min-width: 60vw;
+    height: 20vh;
+    position: relative;
+    z-index: 1;
+    margin-left:-1vw;
+    margin-top: -4vh;
+    background-size: contain;
+    background-position: 0 -6vh
+}
+
+#event-show-banner div{
+    height:10vh;
+    margin-left: -2vw;
+    margin-top: 0vh;
+}
+
+#event-show-banner h2{
+    font-size: 2rem;
+    margin: 0 1vw
+}
+
+.banner h3{
+    margin: 0 1vw;
+}

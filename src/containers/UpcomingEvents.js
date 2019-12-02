@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import './css/upcomingEvents.css';
+import './css/cardList.css';
 import UpcomingEventCard from '../components/UpcomingEventCard'
 import { fetchUpcomingEvents } from '../redux/actions'
  
@@ -40,7 +40,7 @@ class UpcomingEvents extends Component {
     renderEventCards = (events) => {
         return events.map(event=>{
             return(
-                <UpcomingEventCard key={event.id} {...event}/>
+                <UpcomingEventCard key={event.id} event={event}/>
             )
         })
     }
@@ -58,10 +58,10 @@ class UpcomingEvents extends Component {
 
     render() { 
         return (
-            <div className="upcoming-events-container">
+            <div className="card-container">
                 <h2>Upcoming Events</h2>
                 <hr/>
-                <div className="events-container">
+                <div className="card-list">
                     {this.props.events?this.renderEvents():"Loading"}
                 </div>
             </div>

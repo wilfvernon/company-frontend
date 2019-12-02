@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { newEventModal, toggleMenuAction } from '../redux/actions'
+import { newEventModal, toggleMenuAction, logoutAction } from '../redux/actions'
 import { Link } from 'react-router-dom'
 import './css/menu.css'
 import { RAILS_BASE_URL } from "../index"
@@ -68,14 +68,15 @@ class Menu extends Component {
     render(){
         return (
         <div className="page-menu">
-            <img id="company-logo" src='/company_clear_reactor.png' alt="active-character"/>
+            <img id="company-logo" src='/company_clear.png' alt="active-character"/>
             <div id="menu-items">
                 <div className="category">
-                    <input id="search-input" type="text" placeholder="Search" onChange={this.handleChange} value={this.state.searchInput}/>
+                    <input autoComplete="off" id="search-input" type="text" placeholder="Search" onChange={this.handleChange} value={this.state.searchInput}/>
                 </div>
                 {this.state.searchResults.length?
                 <SearchResults results={this.state.searchResults} model={this.state.searchModel}/>
-                :null}
+                :
+                <Fragment>
                 <hr/>
                 <div className="category">
                     <div className="header">
@@ -127,6 +128,13 @@ class Menu extends Component {
                     </ul>
                     : null}
                 </div>
+                <hr/>
+                <div className="category">
+                    <div className="header">
+                        <h2 onClick={this.props.logoutAction}>Logout</h2> 
+                    </div>
+                </div>
+                </Fragment>}
             </div>
         </div>
         )
@@ -138,4 +146,4 @@ const msp = (state) => ({
     activeCharacter: state.characters.accountPrimary
 })
 
-export default connect(msp, { newEventModal, toggleMenuAction })(Menu)
+export default connect(msp, { newEventModal, toggleMenuAction, logoutAction })(Menu)

@@ -6,6 +6,8 @@ const defaultState = {
  
 const eventReducer = (prevState = defaultState, action) => {
     switch (action.type) {
+        case "LOGOUT":
+            return {defaultState}
         case "GET_USER_EVENTS":
             return {...prevState, userEvents: action.payload.filter(event=>!event.time.happened), pastEvents: action.payload.filter(event=>event.time.happened)}
         case "UPCOMING_EVENTS":

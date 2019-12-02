@@ -1,0 +1,69 @@
+.community-show-main{
+    z-index: 1;
+    margin: 0vh 2vw 1vh 2vw;
+    background-color: rgba(207, 207, 207, 0.329);
+    width: 58vw;
+    height: 78vh;
+    border-radius: 7px;
+}
+
+#community-show-main-view{
+    padding-top: 1vh;
+    margin-left: -1vw;
+}
+
+#community-show-description{
+    margin: 1vh 1vw 0 10vw;
+    color: #36454F
+}
+
+#community-show-desc-buttons{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+#community-show-view-buttons{
+    margin: 1%
+}
+
+#community-show-view-buttons *{
+    z-index: 1
+}
+
+#community-show-view-buttons *:focus{
+    outline: none;
+}
+
+#calendar-button{
+    border-radius: 0 7px 7px 0
+    
+}
+
+ #post-button{
+    border-radius: 7px 0 0 7px
+}
+
+.active-community-view-button{
+    background-color: rgb(39, 156, 172);
+    box-shadow: 0 0 5px 1px inset rgba(0, 0, 0, 0.349);
+}
+
+.inactive-community-view-button{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px 1px  rgba(104, 152, 184, 0.349)
+}
+
+.inactive-community-view-button:hover{
+    background-color:  rgba(10, 42, 46, 0.452);
+    cursor: pointer;
+}
+
+.active-community-view-button i{
+    color: white
+}
+
+.inactive-community-view-button i{
+    color: rgb(39, 156, 172)
+}
+

@@ -1,0 +1,18 @@
+.member-list-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width:22vw;
+    margin: 2% 6%;
+    padding: 5%;
+    background-color: rgb(76, 112, 148);
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746) 
+}
+
+.member-list-item img{
+    object-fit: cover;
+    border-radius: 7px;
+    height: 10vh;
+    margin-right: 1vw;
+}

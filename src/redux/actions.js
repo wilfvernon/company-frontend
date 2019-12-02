@@ -1,5 +1,9 @@
 import { FFXIV_API_BASE_URL, RAILS_BASE_URL } from '../index'
 
+export const logoutAction = () => {
+    return({type: "LOGOUT"})
+}
+
 //characters
 export const characterAction = (character) => {
     return {type: "CHARACTER", payload: character}

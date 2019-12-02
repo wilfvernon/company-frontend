@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { eventPostAction } from '../redux/actions'
 import './css/upcomingEventCard.css'
 import { RAILS_BASE_URL } from '../index'
 
@@ -18,15 +19,19 @@ class UpcomingEventCard extends Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                event_id: this.props.id,
+                event_id: this.props.event.id,
                 character_id: this.props.activeCharacter.id
             })
-        }).then(this.setState({
-            disabled: true
-        }))
+        }).then(res=>res.json())
+        .then((res)=>{
+            console.log(res)
+            this.setState({disabled: true})
+            this.props.eventPostAction(res.event)
+        })
     }
     render(){
-        const {organiser, time, id, name, description, content, members, activeCharacter} = this.props
+        const { event, activeCharacter} = this.props
+        const { organiser, time, id, name, description, content, members } = event
         return (
             <div className="upcoming-event-card">
                 <div className="ue-card-header">
@@ -56,4 +61,4 @@ const msp = (state) => ({
     activeCharacter: state.characters.accountPrimary
 })
 
-export default connect(msp)(UpcomingEventCard)
+export default connect(msp, { eventPostAction })(UpcomingEventCard)

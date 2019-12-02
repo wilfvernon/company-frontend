@@ -24,7 +24,7 @@ class LoginForm extends Component {
         return(
             <div>
                <form className="login-form-form" onSubmit={this.handleSubmit}>
-                   <input name="username" placeholder="username" value={this.state.userInput} type="text" onChange={this.handleChange}/>
+                   <input autoComplete="off" name="username" placeholder="username" value={this.state.userInput} type="text" onChange={this.handleChange}/>
                    <input type="submit" value="Log In"/>
                </form>
                {this.props.authenticated === false ? <h4 id="auth-fail-text">Uh-oh! No account by that name!</h4>:null}

@@ -7,9 +7,9 @@ const SearchResults = (props) => {
         const { model, results } = props
         return results.map(res=>{
             return(
-                <li key={res.id} className="search-result">
+                <div key={res.id} className="search-result">
                     <Link to={`/${model}/` + res.id}><h4>{res.name}</h4></Link>
-                </li>
+                </div>
             )
         })
     }

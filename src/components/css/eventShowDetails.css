@@ -1,0 +1,44 @@
+#event-detail-box{
+    
+    background-color: rgb(76, 112, 148);
+    height: 59vh;
+    width: 55vw;
+    margin: -1vh 2.5% 4%;
+    border-radius: 7px;
+    color: white;
+    box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746) 
+}
+
+#event-detail-content{
+    padding: 1%;
+    margin-left: 2%;
+    width: 55vw;
+    display: flex;
+    flex-direction: row;
+}
+
+#event-info{
+    width: 26vw;
+}
+
+#event-info a{
+    text-decoration: none;
+    color: white;
+}
+
+#event-info a:hover{
+    text-decoration: underline;
+}
+
+#content-info-box{
+    margin-top: 1vh;
+    background-color: rgb(39, 138, 138);
+    border-radius: 7px;
+    box-shadow: 0 0 10px 0 inset rgb(5, 77, 77);
+    width: 25vw;
+    height: 55vh;
+}
+
+#content-info{
+    margin: 4%
+}

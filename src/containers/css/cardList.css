@@ -1,5 +1,5 @@
-.upcoming-events-container{
-    z-index: 3;
+.card-container{
+    
     background-color: rgba(207, 207, 207, 0.329);
     margin: 3vh 2vw 1vh 1.5vw;
     width: 28vw;
@@ -11,21 +11,30 @@
     color: rgb(255, 255, 255);
 }
 
-.upcoming-events-container hr{
+.card-container *{
+    z-index: 1;
+}
+
+.card-container hr{
     margin-top: -1.5vh;
     border: 1px solid rgba(72, 93, 143, 0.575);
     width: 20vw;
 }
-
-.events-container{
+.card-list{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-list{
     overflow-y: scroll;
 }
 
-.events-container a:hover{
+.card-list a:hover{
     color:rgb(251, 251, 251);
 }
 
-.events-container a{
+.card-list a{
     text-decoration: none;
     color:rgb(87, 181, 209);
 }

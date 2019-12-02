@@ -2,7 +2,6 @@ import React from 'react';
 import './css/calendarEvent.css'
 
 const CalendarEvent = (props) => {
-    console.log(props)
     return (
         <div className="cal-event-container">
             <img src={props.event.fullEvent.icon} alt="event-icon"></img>

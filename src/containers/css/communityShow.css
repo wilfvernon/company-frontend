@@ -1,19 +1,15 @@
-.community-show-main{
-    margin: -2vh 2vw;
-    padding-top: 0.5vh;
-    width: 75vw;
-    min-height: 73vh;
+.community-show-main-container{
+    display:flex;
+    flex-direction: row;
 }
-
 .community-main-info{
+    margin-top: 2vh;
     display: flex;
     flex-direction: row
 }
 
-#server{
-    margin: 0 0vw 0 12vw;
-    padding: 0;
-    color: white;
-    /* margin-left: 10vw; */
-    font-size: 1.2rem;
+
+
+#community-member-list{
+    margin-top: -10vh;
 }

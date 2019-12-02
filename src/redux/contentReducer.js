@@ -11,6 +11,8 @@ const contentFilter = (array, category) => {
 
 const contentReducer = (prevState = defaultState, action) => {
     switch (action.type) {
+        case "LOGOUT":
+            return {defaultState}
         case "ALL_CONTENT":
             return {
                 ...prevState, 

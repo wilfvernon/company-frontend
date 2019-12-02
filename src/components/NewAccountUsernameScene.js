@@ -26,7 +26,6 @@ class NewAccountUsernameScene extends Component {
     }
 
     render() { 
-        console.log(this.state)
         return (
             <form>
                 <input name="username" type="text" value={this.state.usernameInput} onChange={this.handleChange}/>

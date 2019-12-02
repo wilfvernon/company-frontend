@@ -6,6 +6,8 @@ const defaultState={
 
 const modalReducer= (prevState=defaultState, action) => {
     switch (action.type) {
+        case "LOGOUT":
+            return {defaultState}
         case "TOGGLE_MENU":
             return {...prevState, menu: !prevState.menu }
         case "NEW_EVENT_MODAL":

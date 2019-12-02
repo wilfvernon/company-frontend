@@ -23,7 +23,6 @@ class NewAccountCharacterScene extends Component {
         fetch(FFXIV_API_BASE_URL + "character/" + this.state.lodestoneId)
         .then(res=>res.json())
         .then(character=>{
-            console.log(character)
             this.props.setParentState({ character: character["Character"] })
         })
     }

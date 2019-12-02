@@ -23,6 +23,12 @@ textarea {
   resize: none
 }
 
+#loading {
+  margin-top: 15%;
+  margin-left: 42%;
+  height: 30vh;
+}
+
 .stars-div{
   position: relative;
   margin-top:-6px;

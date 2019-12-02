@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
 import { connect } from 'react-redux'
 import CommunityShowHeader from '../components/CommunityShowHeader'
-import CommunityShowProfile from '../components/CommunityShowProfile'
-import MemberList from '../components/MemberList'
-import UpcomingEvents from './UpcomingEvents'
+import CommunityShowMain from './CommunityShowMain'
+import MemberList from './MemberList'
+// import UpcomingEvents from './UpcomingEvents'
 import './css/communityShow.css'
 
 class CommunityShow extends Component {
@@ -12,7 +12,10 @@ class CommunityShow extends Component {
     state={
         community: null,
         api_community: null,
-        members: null
+        members: null,
+        isMember: false,
+        view: "calendar",
+        events: []
     }
 
     componentDidMount(){
@@ -21,7 +24,10 @@ class CommunityShow extends Component {
         .then((fc)=>{
             this.setState({
             community: fc.community,
-            members: fc.characters
+            members: fc.members,
+            admins: fc.admins,
+            isMember: fc.members.concat(fc.admins).map(member=>member.id).includes(this.props.activeCharacter.id)?true:false,
+            events: fc.events
         })
         if(this.state.community.category === "FC"){
             fetch(FFXIV_API_BASE_URL + "freecompany/" + this.state.community.api_id)
@@ -51,24 +57,41 @@ class CommunityShow extends Component {
             members: [...this.state.members, this.props.activeCharacter]
         }))
     }
+
+    changeView = (view) => {
+        this.setState({view})
+    }
             
     render(){
-        const { community, api_community, members } = this.state
+        const { community, api_community, members, admins, isMember, view, events } = this.state
         return(
         api_community && members?
         <div className="community-show">
-            <CommunityShowHeader community={community} api_community={api_community}/>
-            <div className="community-show-main">
-                <span id="server">{community.server}</span>
+            <CommunityShowHeader 
+                join={this.joinCommunity} 
+                isMember={isMember} 
+                community={community} 
+                api_community={api_community}
+            />
+                
+            <div className="community-show-main-container">
                 <div className="community-main-info">
-                    <CommunityShowProfile community={community} api_community={api_community}/>
-                    <UpcomingEvents/>
-                    <MemberList join={this.joinCommunity} members={members}/>
+                    <CommunityShowMain 
+                        view={view} 
+                        community={community} 
+                        api_community={api_community}
+                        events={events}
+                        history={this.props.history}
+                        changeView={this.changeView}
+                    />
+                </div>
+                <div id="community-member-list">
+                    <MemberList members={members} admins={admins}/>
                 </div>
             </div>
         </div>
         :
-        <img src="/company_loader.png" alt="company_loader"/>
+        <img id="loading" src="/company_loader.png" alt="company_loader"/>
         )
     }
 }

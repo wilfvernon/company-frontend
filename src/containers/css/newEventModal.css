@@ -4,7 +4,7 @@
     text-align: end;
 }
 
-.banner h1{
+.banner h1, .banner div{
     background-color: rgba(136, 136, 136, 0.767);
     color: white;
     padding-right: 1vw;
