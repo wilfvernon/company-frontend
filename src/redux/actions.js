@@ -123,3 +123,16 @@ export const newAccountModal = () => {
 export const newPostModal = (id, target) => {
     return {type: "NEW_POST_MODAL", payload: {id, target}}
 }
+
+//jobs
+export const jobAction = (jobs) => {
+    return ({type: "JOB_ACTION", payload: jobs})
+}
+
+export const fetchJobs = () => {
+    return(dispatch) => {
+        fetch(RAILS_BASE_URL + "jobs")
+        .then(res=>res.json())
+        .then(jobs=>dispatch(jobAction(jobs)))
+    }
+}

@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import NewEventInfoScene from '../components/NewEventInfoScene'
 import NewEventDescScene from '../components/NewEventDescScene'
+import PreferredJobScene from '../components/PreferredJobScene'
 import NewEventConfirmedScene from '../components/NewEventConfirmedScene'
 import ModalSubBanner from '../components/ModalSubBanner'
-// import PreferredJobScene from '../components/PreferredJobScene'
 import { connect } from 'react-redux'
 import { eventPostAction, closeModal } from '../redux/actions'
 import { FFXIV_API_BASE_URL, RAILS_BASE_URL } from '../index'
@@ -25,7 +25,8 @@ class NewEventModal extends Component {
         description: "",
         character: "",
         errorKeys: [],
-        postValid: null
+        postValid: null,
+        preferredJobs: []
     }
 
     componentDidMount=()=>{
@@ -41,7 +42,7 @@ class NewEventModal extends Component {
     getScene = () => {
         const { scene, name, start, end, date, location, purpose, category, community, content, character } = this.state
         switch (scene) {
-            case 1:
+            case 3:
                 return (
                 <Fragment>
                     <NewEventInfoScene 
@@ -68,7 +69,17 @@ class NewEventModal extends Component {
                     </div>
                 </Fragment>
                 )
-            case 3:
+            case 1:
+                return (
+                <Fragment>
+                    <PreferredJobScene setEvent={this.setEvent}/>
+                    <div className="buttons-container">
+                        <button onClick={this.incrementScene}>Next</button>
+                        <button onClick={this.decrementScene}>Back</button>
+                    </div>
+                </Fragment>
+                )
+            case 4:
                 return (
                 <Fragment>
                     <NewEventConfirmedScene />
@@ -83,7 +94,7 @@ class NewEventModal extends Component {
     }
     renderSubBanner = () => {
         switch (this.state.scene) {
-            case 1:
+            case 3:
                  if(!this.state.errorKeys.length){
                     return <ModalSubBanner class="sub-banner" text={()=><p>Fill in the details for your event:</p>}/>
                  }else{
@@ -92,7 +103,9 @@ class NewEventModal extends Component {
                  }
             case 2:
                 return <ModalSubBanner class="sub-banner" text={()=><p>Add a description:</p>}/>
-            case 3:
+            case 1:
+                return <ModalSubBanner class="sub-banner" text={()=><p>Pick which jobs you want to play:</p>}/>
+            case 4:
                 return (
                     this.state.postValid ? 
                     <ModalSubBanner class="success-banner" text={()=><p>Your event has been succesfully created!</p>}/>

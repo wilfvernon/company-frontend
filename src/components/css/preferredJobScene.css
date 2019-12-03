@@ -1,0 +1,32 @@
+.modal-job-icon{
+    filter: brightness(50%)
+}
+
+.modal-job-icon, .modal-job-icon-selected{
+    height: 9.5vh;
+    /* width: 10vh */
+}
+
+.modal-job-icon:hover, .modal-job-icon-selected:hover{
+    cursor: pointer;
+    filter: brightness(120%)
+}
+
+.role-row{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.job-icon-row{
+    display: flex;
+    flex-direction: row;
+    margin: 1vh 2vw 0;
+}
+
+#modal-job-icon-container{
+    margin: 0 2vw 0;
+    width: 42vw;
+    display:flex;
+    flex-direction: column;
+    justify-content: center
+}

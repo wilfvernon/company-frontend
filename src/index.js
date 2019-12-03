@@ -12,6 +12,7 @@ import contentReducer from './redux/contentReducer'
 import eventReducer from './redux/eventReducer'
 import communityReducer from './redux/communityReducer';
 import modalReducer from './redux/modalReducer';
+import jobReducer from './redux/jobReducer';
 import thunkReducer from './redux/thunkReducer';
 
 export const RAILS_BASE_URL = "http://localhost:3000/api/v1/"
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
     events: eventReducer,
     communities: communityReducer,
     modal: modalReducer,
+    jobs: jobReducer,
     thunk: thunkReducer
 })
 

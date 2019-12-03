@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CalendarEvent from '../components/CalendarEvent'
 import UpcomingEvents from './UpcomingEvents'
-import { fetchContent, fetchAccountEvents } from '../redux/actions'
+import { fetchContent, fetchAccountEvents, fetchJobs } from '../redux/actions'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment'
 import './css/rbc.css'
@@ -16,7 +16,8 @@ const components = {
 class UserCalendar extends Component {
 
     componentDidMount(){
-        const { fetchAccountEvents, fetchContent, activeUser } = this.props
+        const { fetchAccountEvents, fetchContent, fetchJobs, activeUser } = this.props
+        fetchJobs()
         fetchContent()
         fetchAccountEvents(activeUser.id)
     }
@@ -66,4 +67,4 @@ const msp = (state) => ({
     events: state.events.userEvents
 })
 
-export default connect(msp, { fetchContent, fetchAccountEvents })(UserCalendar)
+export default connect(msp, { fetchContent, fetchAccountEvents, fetchJobs })(UserCalendar)
