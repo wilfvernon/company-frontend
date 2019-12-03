@@ -14,8 +14,9 @@ class CommunityShow extends Component {
         api_community: null,
         members: null,
         isMember: false,
-        view: "calendar",
-        events: []
+        view: "posts",
+        events: [],
+        threads: []
     }
 
     componentDidMount(){
@@ -27,7 +28,8 @@ class CommunityShow extends Component {
             members: fc.members,
             admins: fc.admins,
             isMember: fc.members.concat(fc.admins).map(member=>member.id).includes(this.props.activeCharacter.id)?true:false,
-            events: fc.events
+            events: fc.events,
+            threads: fc.threads
         })
         if(this.state.community.category === "FC"){
             fetch(FFXIV_API_BASE_URL + "freecompany/" + this.state.community.api_id)
@@ -63,7 +65,7 @@ class CommunityShow extends Component {
     }
             
     render(){
-        const { community, api_community, members, admins, isMember, view, events } = this.state
+        const { community, api_community, members, admins, isMember, view, events, threads } = this.state
         return(
         api_community && members?
         <div className="community-show">
@@ -82,6 +84,7 @@ class CommunityShow extends Component {
                         events={events}
                         history={this.props.history}
                         changeView={this.changeView}
+                        threads={threads}
                     />
                 </div>
                 <div id="community-member-list">

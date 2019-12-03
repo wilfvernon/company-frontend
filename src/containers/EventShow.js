@@ -79,7 +79,8 @@ class EventShow extends Component {
                 return (
                     <PostContainer
                         threads={this.state.threads}
-                        eventId={this.state.event.id}
+                        targetId={this.state.event.id}
+                        target="event"
                     />
                 )
             case "details":

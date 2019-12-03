@@ -4,6 +4,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import CalendarEvent from '../components/CalendarEvent'
 import moment from 'moment'
 import './css/communityShowMain.css'
+import PostContainer from './PostContainer';
 
 const localizer = momentLocalizer(moment)
 const components = {
@@ -39,13 +40,20 @@ class CommunityShowMain extends Component {
                 />
                 )
             case "posts":
-                return<h1>Posts</h1>
+                return(
+                    <PostContainer
+                        threads={this.props.threads}
+                        targetId={this.props.community.id}
+                        target="community"
+                    />
+                )
             default:
                 break;
         }
     }
 
     render() { 
+        console.log(this.props.community)
         const { community, view, changeView } = this.props
         return (
             <div className="community-show-main">

@@ -24,7 +24,7 @@ class PostContainer extends Component {
     }
 
     fetchPost=(id)=>{
-        fetch(RAILS_BASE_URL + "event_threads/" + id)
+        fetch(RAILS_BASE_URL + this.props.target + "_threads/" + id)
         .then(res=>res.json())
         .then(thread=>{
             console.log(thread)
@@ -92,7 +92,7 @@ class PostContainer extends Component {
                     <button onClick={this.newPostModal}>Comment</button>
                 </div>
             </div>
-            <div id="thread-posts">
+            <div id={this.props.target + "-thread-posts"}>
             {thread.posts?
             thread.posts.map(post=>{
                 return (
@@ -128,24 +128,24 @@ class PostContainer extends Component {
     }
 
     newThreadModal = () => {
-        this.props.newPostModal(this.props.eventId, "event")
+        this.props.newPostModal(this.props.targetId, this.props.target)
     }
 
     newPostModal = () => {
-        this.props.newPostModal(this.state.thread.thread.id, "eventPost")
+        this.props.newPostModal(this.state.thread.thread.id, (this.props.target + "Post"))
     }
 
     render() { 
         return (
-            <div id="event-post-box">
-                <div id="event-post-header">                   
+            <div id={this.props.target + "-post-box"}>
+                <div id={this.props.target + "-post-header"}>                   
                         <h2>Discussion</h2>
-                    <div id="event-post-header-div">
+                    <div id={this.props.target + "-post-header-div"}>
                         <i onClick={this.newThreadModal} className="material-icons">post_add</i>
                         {this.state.thread?<i onClick={this.threadView} className="material-icons">arrow_back</i>:null}
                     </div>
                 </div>
-                <ul id="event-thread-box" style={this.state.thread?{overflow: "hidden"}:{overflow:"scroll"}}>
+                <ul id={this.props.target + "-thread-box"} style={this.state.thread?{overflow: "hidden"}:{overflow:"scroll"}}>
                     {this.props.threads.length?
                     this.renderContent()
                     :<div className="thread-box">

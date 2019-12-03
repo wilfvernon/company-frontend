@@ -154,7 +154,61 @@
     cursor: pointer;
 }
 
-#thread-posts{
+#event-thread-posts{
     overflow: scroll;
     height:37vh;
+}
+
+#community-thread-posts{
+    overflow: scroll;
+    height:51vh;
+}
+
+#community-post-box{
+    background-color: rgb(76, 112, 148);
+    height: 66vh;
+    width: 52vw;
+    margin: 0vh 2vw 4%;
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746);
+    padding: 2vh 2vw;
+}
+
+#community-post-header{
+    color: white;
+    width: 51vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#community-post-header h2{
+    margin:0
+}
+
+#community-post-header-div{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 0vh;
+}
+
+#community-post-header-div i{
+    margin-right: 1vw;
+    height: 3vh;
+}
+
+#community-post-header-div i:hover{
+    color: lightgreen;
+    cursor: pointer;
+}
+
+#community-thread-box{
+    color: rgb(49, 79, 110);
+    width: 51vw;
+    background-color: rgba(250, 235, 215, 0.822);
+    height: 60vh;
+    border-radius: 7px;
+    box-shadow: 0 0 5px 0 grey inset;
+    padding: 0;
+    /* overflow: visible; */
 }
