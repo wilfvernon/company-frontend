@@ -89,7 +89,8 @@ class CommunityShow extends Component {
                         isMember={isMember}  
                         members={members} 
                         admins={admins}
-                        join={this.joinCommunity} 
+                        join={this.joinCommunity}
+                        adminName="Admin" 
                     />  
                 </div>
             </div>

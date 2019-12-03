@@ -26,8 +26,6 @@ const EventShowDetails = (props) => {
             </div> 
         )    
     }
-
-    console.log(event)
     return (
         <div id="event-detail-box">
             <div id="event-detail-content">
@@ -35,7 +33,7 @@ const EventShowDetails = (props) => {
                     <h2>
                         <Link to={"/communities/" + event.community_id}>
                         <span className="community-image">{renderCommunityImage()}</span>
-                        <span style={{marginLeft: "4vh"}}>{event.community}</span>
+                        <span style={{marginLeft: "5vh"}}>{event.community}</span>
                         </Link>
                     </h2>   
                     <h3>Organised by {event.organiser.name}</h3>                

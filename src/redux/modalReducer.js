@@ -1,7 +1,9 @@
 const defaultState={
     modal: false,
     modalType: "",
-    menu: false
+    menu: false,
+    threadTargetId: null,
+    threadTarget: "w"
 }
 
 const modalReducer= (prevState=defaultState, action) => {
@@ -14,8 +16,10 @@ const modalReducer= (prevState=defaultState, action) => {
             return {...prevState, modalType: "EventNew", modal:true}
         case "NEW_ACCOUNT_MODAL":
             return {...prevState, modalType: "AccountNew", modal:true}
+        case "NEW_POST_MODAL":
+            return {...prevState, modalType: "PostNew", modal:true, threadTargetId: action.payload.id, threadTarget: action.payload.target}
         case "CLOSE_MODAL":
-            return {...prevState, modalType: "", modal:false}
+            return {...prevState, modalType: "", modal:false, threadTargetId: null}
         default:
             return prevState
     }

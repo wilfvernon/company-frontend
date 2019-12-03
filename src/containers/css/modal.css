@@ -23,7 +23,6 @@
     margin: auto;
     margin-top: 10vh;
     height: 80vh;
-    width: 43vw;
     border-radius: 7px;
     border: solid 1px #424542;
   box-shadow: 1px 1px #e7dfe7,
@@ -54,7 +53,6 @@
     text-shadow: 2px 2px #212421,
                  1px 1px #212021;
     font-family: "Reactor7";
-    font-weight: normal;
     font-size: 1.5rem;
   }
 
@@ -62,7 +60,6 @@
 .modal-close{
     color:rgb(149, 148, 148);
     position: absolute;
-    margin-left:72vw;
     margin-top:4.5vh;
 }
 

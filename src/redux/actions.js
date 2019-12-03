@@ -119,3 +119,7 @@ export const newEventModal = () => {
 export const newAccountModal = () => {
     return {type:"NEW_ACCOUNT_MODAL"}
 }
+
+export const newPostModal = (id, target) => {
+    return {type: "NEW_POST_MODAL", payload: {id, target}}
+}

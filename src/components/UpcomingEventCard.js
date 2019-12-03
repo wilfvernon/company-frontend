@@ -24,7 +24,6 @@ class UpcomingEventCard extends Component {
             })
         }).then(res=>res.json())
         .then((res)=>{
-            console.log(res)
             this.setState({disabled: true})
             this.props.eventPostAction(res.event)
         })

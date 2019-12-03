@@ -1,0 +1,15 @@
+#post-title{
+    width: 46vw;
+    background-color: darkblue;
+    font-size: 2rem;
+    margin-left: 2%;
+}
+
+#post-title::placeholder{
+    color: rgba(173, 216, 230, 0.575)
+}
+
+#post-thread-button{
+    margin-left: 50vw;
+    margin-top: 8vh;
+}

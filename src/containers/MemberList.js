@@ -5,7 +5,7 @@ import MemberListItem from '../components/MemberListItem';
  
 const MemberList = (props) => {
 
-    const { members, admins, isMember, join } = props
+    const { members, admins, isMember, join, adminName } = props
 
     const handleClick = (event) => {
         event.persist();
@@ -16,7 +16,7 @@ const MemberList = (props) => {
     const renderAdmins = () => {
         return admins.map(admin=>{
            return( 
-           <MemberListItem {...admin} isAdmin={true} key={admin.id}/>
+           <MemberListItem {...admin} isAdmin={true} key={admin.id} adminName={adminName}/>
            )
         })
     }
@@ -24,7 +24,7 @@ const MemberList = (props) => {
     const renderMembers = () => {
         return members.map(member=>{
            return( 
-            <MemberListItem {...member} isAdmin={false} key={member.id}/>
+            <MemberListItem {...member} isAdmin={false} key={member.id} adminName={adminName}/>
            )
         })
     }

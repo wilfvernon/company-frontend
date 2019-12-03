@@ -5,6 +5,7 @@ import EventShowDetails from '../components/EventShowDetails'
 import MemberList from './MemberList'
 import './css/eventShow.css'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
+import PostContainer from './PostContainer';
 
  
 class EventShow extends Component {
@@ -14,11 +15,12 @@ class EventShow extends Component {
         members: null,
         content: null,
         view: "details",
-        isMember: false
+        isMember: false,
+        threads: []
     }
 
-    componentDidMount=()=>{
-        fetch(RAILS_BASE_URL + "events/" + this.props.id)
+    fetchEvents = () =>{
+        return fetch(RAILS_BASE_URL + "events/" + this.props.id)
         .then(res=>res.json())
         .then(res=>{this.setState({
             event: res,
@@ -26,11 +28,29 @@ class EventShow extends Component {
             isMember: res.members.map(member=>member.id).includes(this.props.activeCharacter.id)
         })
         return res.content})
-        .then(content=>{
-            fetch(FFXIV_API_BASE_URL + "instancecontent/" + content.api_id)
-            .then(res=>res.json())
-            .then(content=>this.setState({ content }))
-        })
+    }
+
+    fetchContent = (content) =>{
+        fetch(FFXIV_API_BASE_URL + "instancecontent/" + content.api_id)
+        .then(res=>res.json())
+        .then(content=>this.setState({ content }))
+    }
+
+    fetchThreads = () =>{
+        fetch(RAILS_BASE_URL + "events/" + this.props.id + "/threads")
+        .then(res=>res.json())
+        .then(threads=>this.setState({threads}))
+    }
+
+    componentDidMount=()=>{
+        this.fetchEvents()
+        .then(this.fetchContent)
+        this.fetchThreads()
+        this.interval = setInterval(()=>this.fetchThreads(), 8000)
+    }
+
+    componentWillUnmount=()=>{
+        clearInterval(this.interval)
     }
 
     joinEvent = () => {
@@ -57,7 +77,10 @@ class EventShow extends Component {
         switch (this.state.view) {
             case "posts":
                 return (
-                    <h1>Posts</h1>
+                    <PostContainer
+                        threads={this.state.threads}
+                        eventId={this.state.event.id}
+                    />
                 )
             case "details":
                 return (
@@ -76,7 +99,6 @@ class EventShow extends Component {
     }
 
     render() { 
-        console.log(this.state)
         return (
             <div className="event-show-page">
             {this.state.content ?
@@ -125,6 +147,7 @@ class EventShow extends Component {
                         members={this.state.members.filter(member=>member.id!==this.state.event.organiser.id)} 
                         join={this.joinEvent}
                         isMember={this.state.isMember}
+                        adminName="Organiser"
                     />
                     </div>
                 </div>
