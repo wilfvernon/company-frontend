@@ -30,7 +30,10 @@ class UpcomingEventCard extends Component {
     }
     render(){
         const { event, activeCharacter} = this.props
-        const { organiser, time, id, name, description, content, members } = event
+        const { time, id, name, description, content } = event
+        const organiser = event.organiser.character
+        const members = event.members.map(member=>member.character)
+        console.log(event.members.map(member=>member.character))
         return (
             <div className="upcoming-event-card">
                 <div className="ue-card-header">
@@ -46,7 +49,7 @@ class UpcomingEventCard extends Component {
                 <div className="ue-card-body">
                     <p>{description}</p>
                     <p>{content.name}</p>
-                    {members.map(member=>member.id).includes(activeCharacter.id) || this.state.disabled?
+                    {members.map(member=>member.id).includes(activeCharacter.id) || organiser.id===activeCharacter.id||this.state.disabled?
                     <button disabled={true}>Already Joined</button>
                     :
                     <button onClick={this.joinEvent}>Join</button>}

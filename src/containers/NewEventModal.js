@@ -39,10 +39,21 @@ class NewEventModal extends Component {
         })
     }
 
+    setJobs = (job) => {
+        this.state.preferredJobs.includes(job)?
+        this.setState(prevState=>({
+            preferredJobs: prevState.preferredJobs.filter(j=>j!==job)
+        }))
+        :
+        this.setState(prevState=>({
+            preferredJobs: [...prevState.preferredJobs, job]
+        }))
+    }
+
     getScene = () => {
         const { scene, name, start, end, date, location, purpose, category, community, content, character } = this.state
         switch (scene) {
-            case 3:
+            case 1:
                 return (
                 <Fragment>
                     <NewEventInfoScene 
@@ -64,18 +75,18 @@ class NewEventModal extends Component {
                         setEvent={this.setEvent}
                     />
                     <div className="buttons-container">
-                        <button onClick={this.postEvent}>Create Event</button>
+                        <button onClick={this.incrementScene}>Next</button>
                         <button onClick={this.decrementScene}>Back</button>
                     </div>
                 </Fragment>
                 )
-            case 1:
+            case 3:
                 return (
                 <Fragment>
-                    <PreferredJobScene setEvent={this.setEvent}/>
+                    <PreferredJobScene setJobs={this.setJobs} preferredJobs={this.state.preferredJobs}/>
                     <div className="buttons-container">
-                        <button onClick={this.incrementScene}>Next</button>
-                        <button onClick={this.decrementScene}>Back</button>
+                        <button onClick={this.postEvent}>Create Event</button>
+                        <button onClick={this.decrementScene}>Back</button>                        
                     </div>
                 </Fragment>
                 )
@@ -94,7 +105,7 @@ class NewEventModal extends Component {
     }
     renderSubBanner = () => {
         switch (this.state.scene) {
-            case 3:
+            case 1:
                  if(!this.state.errorKeys.length){
                     return <ModalSubBanner class="sub-banner" text={()=><p>Fill in the details for your event:</p>}/>
                  }else{
@@ -103,8 +114,12 @@ class NewEventModal extends Component {
                  }
             case 2:
                 return <ModalSubBanner class="sub-banner" text={()=><p>Add a description:</p>}/>
-            case 1:
-                return <ModalSubBanner class="sub-banner" text={()=><p>Pick which jobs you want to play:</p>}/>
+            case 3:
+                if(!this.state.errorKeys.length){
+                    return <ModalSubBanner class="sub-banner" text={()=><p>Pick which jobs you want to play:</p>}/>
+                }else{
+                    return <ModalSubBanner class="failure-banner" text={()=><p>Please select at least one job</p>}/>
+                }
             case 4:
                 return (
                     this.state.postValid ? 
@@ -126,7 +141,7 @@ class NewEventModal extends Component {
     }
 
     checkFields = () => {
-        const { name, start, end, date, purpose, category, content, character } = this.state
+        const { name, start, end, date, purpose, category, content, character, preferredJobs } = this.state
         switch (this.state.scene) {
             case 1:
                 let arr = Object.entries({ name, start, end, date, purpose, category, content, character}).filter(([key, value])=>!!value===false)
@@ -134,6 +149,9 @@ class NewEventModal extends Component {
                 return arr
             case 2:
                 return []
+            case 3:
+                if(preferredJobs.length) return []
+                else return ["job"]
             default:
                 break;
         }
@@ -141,13 +159,17 @@ class NewEventModal extends Component {
 
     incrementScene = () => {
         if(!this.checkFields().length){
-        this.setState(prevProps=>({
-            scene: prevProps.scene + 1,
-            errorKeys: []
-        }))} else {
+            this.setState(prevProps=>({
+                scene: prevProps.scene + 1,
+                errorKeys: []
+            }))
+            return true
+        } else {
             this.setState({
                 errorKeys: this.checkFields()
+            
             })
+            return false
         }
     }
 
@@ -158,12 +180,13 @@ class NewEventModal extends Component {
     }
 
     eventBody = () => {
-        const { name, start, end, date, location, purpose, category, community, content, description, character } = this.state 
+        const { name, start, end, date, location, purpose, category, community, content, description, character, preferredJobs } = this.state 
         return {
             event: { name, start, end, date, location, purpose, category, description, icon: this.getEventIcon() },
             eventCharacterId: character.id,
             eventCommunityId: community.id,
-            eventContentId: content.id
+            eventContentId: content.id,
+            jobIds: preferredJobs.map(job=>job.id)
         }
     }
 
@@ -179,27 +202,28 @@ class NewEventModal extends Component {
     }
 
     postEvent = () => {
-        fetch(RAILS_BASE_URL + "/events", {
-            method: "POST",
-            headers: {
-                "Accept":"application/json",
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify(this.eventBody())
-        }).then(res=>res.json())
-        .then(res=>{
-            if(res.valid){
-                this.props.eventPostAction(res.event)
-                this.setState({
-                    postValid: true
-                })
-            } else {
-                this.setState({
-                    postValid: false
-                })
-            }
-            this.incrementScene()
-        })
+        if(this.incrementScene()){
+            fetch(RAILS_BASE_URL + "/events", {
+                method: "POST",
+                headers: {
+                    "Accept":"application/json",
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(this.eventBody())
+            }).then(res=>res.json())
+            .then(res=>{
+                if(res.valid){
+                    this.props.eventPostAction(res.event)
+                    this.setState({
+                        postValid: true
+                    })
+                } else {
+                    this.setState({
+                        postValid: false
+                    })
+                }         
+            })
+        }
     }
 
     bannerStyle = () => ({

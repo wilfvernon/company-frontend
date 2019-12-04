@@ -4,19 +4,8 @@ import './css/preferredJobScene.css'
  
 class PreferredJobScene extends Component {
 
-    state={
-        selectedJobs: []
-    }
-
     handleClick=(job)=>{
-        this.state.selectedJobs.includes(job)?
-        this.setState(prevState=>({
-            selectedJobs: prevState.selectedJobs.filter(j=>j!==job)
-        }))
-        :
-        this.setState(prevState=>({
-            selectedJobs: [...prevState.selectedJobs, job]
-        }))
+        this.props.setJobs(job)
     }
 
     getDpsType=(type)=>{
@@ -31,7 +20,7 @@ class PreferredJobScene extends Component {
                     onClick={()=>this.handleClick(job)} 
                     src={job.icon} 
                     alt="job-icon"
-                    className={this.state.selectedJobs.includes(job)?"modal-job-icon-selected":"modal-job-icon"}
+                    className={this.props.preferredJobs.includes(job)?"modal-job-icon-selected":"modal-job-icon"}
                 />
             )
         })

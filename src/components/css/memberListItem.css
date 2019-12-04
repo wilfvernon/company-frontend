@@ -2,17 +2,39 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     width:22vw;
     margin: 2% 6%;
-    padding: 5%;
+    padding: 3%;
     background-color: rgb(76, 112, 148);
     border-radius: 7px;
     box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746) 
 }
 
-.member-list-item img{
+.member-list-profile-image{
     object-fit: cover;
     border-radius: 7px;
     height: 10vh;
     margin-right: 1vw;
 }
+
+.member-list-item h3{
+    margin-bottom: 1vh;
+}
+
+.member-list-job-icon{
+    height: 5vh;
+    filter: brightness(50%)
+}
+
+.member-list-job-icon[selected]{
+    filter: brightness(100%)
+}
+
+.member-list-info{
+    margin-top: -1vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+

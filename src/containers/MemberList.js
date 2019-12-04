@@ -4,6 +4,7 @@ import './css/cardList.css'
 import MemberListItem from '../components/MemberListItem';
  
 const MemberList = (props) => {
+    console.log("memberList", props)
 
     const { members, admins, isMember, join, adminName } = props
 

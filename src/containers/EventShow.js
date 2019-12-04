@@ -25,7 +25,7 @@ class EventShow extends Component {
         .then(res=>{this.setState({
             event: res,
             members: res.members,
-            isMember: res.members.map(member=>member.id).includes(this.props.activeCharacter.id)
+            isMember: res.members.map(member=>member.character.id).includes(this.props.activeCharacter.id)||res.organiser.character.id===this.props.activeCharacter.id
         })
         return res.content})
     }
@@ -145,7 +145,7 @@ class EventShow extends Component {
                     <div id="event-members-list">
                     <MemberList 
                         admins={[this.state.event.organiser]} 
-                        members={this.state.members.filter(member=>member.id!==this.state.event.organiser.id)} 
+                        members={this.state.members.filter(member=>member.character.id!==this.state.event.organiser.id)} 
                         join={this.joinEvent}
                         isMember={this.state.isMember}
                         adminName="Organiser"
