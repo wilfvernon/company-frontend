@@ -1,0 +1,85 @@
+.lineup-bg-container{
+    background-color: rgb(76, 112, 148);
+    height: 55vh;
+    width: 51vw;
+    margin: -1vh 2.5% 4%;
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746);
+    padding: 2vh 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lineup-container{
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: 0 0 20px 0 rgb(8, 8, 8) inset; */
+    border-radius: 7px;
+    border: ridge 1px gold
+}
+
+#lineup-top-row, .lineup-row, #lineup-bottom-row{
+    display: flex;
+    flex-direction: row;
+}
+
+#lineup-top-left, #lineup-top-right,
+.lineup-left, .lineup-right,
+#lineup-bottom-left, #lineup-bottom-right{
+    width: 20vw;
+    height: 12vh;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin:0;
+    padding:0;
+    border: 1px solid rgba(156, 153, 135, 0.438)
+}
+
+#lineup-top-left:hover, #lineup-top-right:hover,
+.lineup-left:hover, .lineup-right:hover,
+#lineup-bottom-left:hover, #lineup-bottom-right:hover{
+    filter: brightness(130%);
+    cursor: pointer
+}
+
+#lineup-top-left{
+    border-radius: 7px 0 0 0;
+}
+
+#lineup-top-right{
+    border-radius: 0 7px 0 0;
+}
+
+#lineup-bottom-left{
+    border-radius: 0 0 0 7px;
+}
+
+#lineup-bottom-right{
+    border-radius: 0 0 7px 0;
+}
+
+#lineup-top-left, #lineup-top-right{
+    background-image: url("/Tank_Icon_Flat_1.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #394ba5
+}
+
+.lineup-left, .lineup-right{
+    background-image: url("/dps.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #743333
+}
+
+#lineup-bottom-left, #lineup-bottom-right{
+    background-image: url("/Healer_Icon_Flat_1.png");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #3c672f
+}
+
+

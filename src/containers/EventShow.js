@@ -7,6 +7,7 @@ import { joinEventModal, clearNewEventMember } from '../redux/actions'
 import './css/eventShow.css'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
 import PostContainer from './PostContainer';
+import EventLineup from './EventLineup'
 
  
 class EventShow extends Component {
@@ -80,14 +81,16 @@ class EventShow extends Component {
                 )
             case "details":
                 return (
-                <EventShowDetails 
-                    content={this.state.content} 
-                    event={this.state.event}
-                />
+                    <EventShowDetails 
+                        content={this.state.content} 
+                        event={this.state.event}
+                    />
                 )
             case "members":
                 return (
-                    <h1>Members</h1>
+                    <EventLineup
+                        
+                    />
                 )
             default:
                 break;
