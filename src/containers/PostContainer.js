@@ -27,7 +27,6 @@ class PostContainer extends Component {
         fetch(RAILS_BASE_URL + this.props.target + "_threads/" + id)
         .then(res=>res.json())
         .then(thread=>{
-            console.log(thread)
             this.setState({thread})
         })
     }

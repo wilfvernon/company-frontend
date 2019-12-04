@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { eventPostAction } from '../redux/actions'
+import { joinEventModal } from '../redux/actions'
 import './css/upcomingEventCard.css'
-import { RAILS_BASE_URL } from '../index'
+// import { RAILS_BASE_URL } from '../index'
 
 class UpcomingEventCard extends Component {
 
@@ -11,29 +11,36 @@ class UpcomingEventCard extends Component {
         disabled: false
     }
 
-    joinEvent = () => {
-        fetch(RAILS_BASE_URL + 'event_characters', {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                event_id: this.props.event.id,
-                character_id: this.props.activeCharacter.id
-            })
-        }).then(res=>res.json())
-        .then((res)=>{
-            this.setState({disabled: true})
-            this.props.eventPostAction(res.event)
-        })
+    joinEvent=()=>{
+        this.props.joinEventModal(this.props.event, this.props.event.content.image, this.setDisabled)
     }
+
+    setDisabled=()=>{
+        this.setState({disabled:true})
+    }
+
+    // joinEvent = () => {
+    //     fetch(RAILS_BASE_URL + 'event_characters', {
+    //         method: "POST",
+    //         headers: {
+    //             "Accept": "application/json",
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             event_id: this.props.event.id,
+    //             character_id: this.props.activeCharacter.id
+    //         })
+    //     }).then(res=>res.json())
+    //     .then((res)=>{
+    //         this.setState({disabled: true})
+    //         this.props.eventPostAction(res.event)
+    //     })
+    // }
     render(){
         const { event, activeCharacter} = this.props
         const { time, id, name, description, content } = event
         const organiser = event.organiser.character
         const members = event.members.map(member=>member.character)
-        console.log(event.members.map(member=>member.character))
         return (
             <div className="upcoming-event-card">
                 <div className="ue-card-header">
@@ -63,4 +70,4 @@ const msp = (state) => ({
     activeCharacter: state.characters.accountPrimary
 })
 
-export default connect(msp, { eventPostAction })(UpcomingEventCard)
+export default connect(msp, { joinEventModal })(UpcomingEventCard)

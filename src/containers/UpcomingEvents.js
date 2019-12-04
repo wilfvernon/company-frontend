@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import './css/cardList.css';
 import UpcomingEventCard from '../components/UpcomingEventCard'
-import { fetchUpcomingEvents } from '../redux/actions'
+import { fetchUpcomingEvents, clearNewEventMember } from '../redux/actions'
  
 class UpcomingEvents extends Component {
 
@@ -14,6 +14,7 @@ class UpcomingEvents extends Component {
 
     componentWillUnmount(){
         clearInterval(this.interval)
+        this.props.clearNewEventMember()
     }
 
     filterEventsByDate = (date) => {
@@ -74,4 +75,4 @@ const msp = (state) => ({
     events: state.events.upcoming
 })
  
-export default connect(msp, { fetchUpcomingEvents })(UpcomingEvents);
+export default connect(msp, { fetchUpcomingEvents, clearNewEventMember })(UpcomingEvents);

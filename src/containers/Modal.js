@@ -5,6 +5,7 @@ import NewPostModal from './NewPostModal'
 import './css/modal.css'
 import { connect } from 'react-redux'
 import { closeModal } from '../redux/actions'
+import JoinEventModal from './JoinEventModal';
 
 const Modal = (props) => {
     
@@ -12,6 +13,8 @@ const Modal = (props) => {
         switch (props.type) {
             case "EventNew":
                 return <NewEventModal/>
+            case "EventJoin":
+                return <JoinEventModal/>
             case "AccountNew":
                 return <NewAccountModal/>
             case "PostNew":

@@ -18,6 +18,14 @@ export function fetchCharacter(id){
     }
 }
 
+export const newEventMemberAction = (ec) =>{
+    return {type: "NEW_EVENT_MEMBER", payload: ec}
+}
+
+export const clearNewEventMember = () =>{
+    return {type: "CLEAR_NEW_EVENT_MEMBER"}
+}
+
 
 //free companies
 export const freeCompanyAction = (FC) => {
@@ -114,6 +122,10 @@ export const toggleMenuAction = () => {
 
 export const newEventModal = () => {
     return {type:"NEW_EVENT_MODAL"}
+}
+
+export const joinEventModal = (event, image, buttonDisabler) => {
+    return {type:"JOIN_EVENT_MODAL", payload: { event, image, buttonDisabler }}
 }
 
 export const newAccountModal = () => {

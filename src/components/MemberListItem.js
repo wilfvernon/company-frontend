@@ -2,11 +2,11 @@ import React from 'react';
 import './css/memberListItem.css'
  
 const MemberListItem = (props) => {
-    console.log(props)
+
     const renderJobs=()=>{
         return(
             <div>
-                {props.jobs.map(job=><img className="member-list-job-icon" selected={job.selected} src={job.job.icon} alt="job-icon"/>)}
+                {props.jobs.map(job=><img className="member-list-job-icon" selected={job.selected} src={job.job.icon} key={job.job.id} alt="job-icon"/>)}
             </div>
         )
     }

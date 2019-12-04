@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import EventShowHeader from '../components/EventShowHeader'
 import EventShowDetails from '../components/EventShowDetails'
 import MemberList from './MemberList'
+import { joinEventModal, clearNewEventMember } from '../redux/actions'
 import './css/eventShow.css'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
 import PostContainer from './PostContainer';
@@ -16,7 +17,8 @@ class EventShow extends Component {
         content: null,
         view: "details",
         isMember: false,
-        threads: []
+        threads: [],
+        disabled: false
     }
 
     fetchEvents = () =>{
@@ -51,22 +53,15 @@ class EventShow extends Component {
 
     componentWillUnmount=()=>{
         clearInterval(this.interval)
+        this.props.clearNewEventMember()
+    }
+
+    disable = () =>{
+        this.setState({disabled: true})
     }
 
     joinEvent = () => {
-        fetch(RAILS_BASE_URL + 'event_characters', {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                event_id: this.state.event.id,
-                character_id: this.props.activeCharacter.id
-            })
-        }).then(this.setState({
-            members: [...this.state.members, this.props.activeCharacter]
-        }))
+        this.props.joinEventModal(this.state.event, this.state.content["Banner"], this.disable)
     }
 
     changeView = (view) => {
@@ -149,6 +144,7 @@ class EventShow extends Component {
                         join={this.joinEvent}
                         isMember={this.state.isMember}
                         adminName="Organiser"
+                        disabled={this.state.disabled}
                     />
                     </div>
                 </div>
@@ -164,4 +160,4 @@ class EventShow extends Component {
         activeCharacter: state.characters.accountPrimary
     })
  
-export default connect(msp)(EventShow);
+export default connect(msp, {joinEventModal, clearNewEventMember})(EventShow);

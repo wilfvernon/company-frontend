@@ -16,7 +16,12 @@ class CommunityShow extends Component {
         isMember: false,
         view: "posts",
         events: [],
-        threads: []
+        threads: [],
+        disabled: false
+    }
+
+    disable=()=>{
+        this.setState({disabled: true})
     }
 
     componentDidMount(){
@@ -58,6 +63,7 @@ class CommunityShow extends Component {
         }).then(this.setState({
             members: [...this.state.members, this.props.activeCharacter]
         }))
+        this.disable()
     }
 
     changeView = (view) => {
@@ -94,6 +100,7 @@ class CommunityShow extends Component {
                         admins={admins}
                         join={this.joinCommunity}
                         adminName="Admin" 
+                        disabled={this.state.disabled}
                     />  
                 </div>
             </div>

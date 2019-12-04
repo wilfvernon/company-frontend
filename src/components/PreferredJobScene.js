@@ -46,7 +46,6 @@ class PreferredJobScene extends Component {
     }
 
     render() { 
-        console.log(this.state)
         return (
             <div id="modal-job-icon-container">
                 {this.renderRoles()}
