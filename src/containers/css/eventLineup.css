@@ -49,7 +49,7 @@
     /* filter: brightness(80%) */
 }
 
-#org-lineup-container #lineup-top-left:hover, #org-lineup-container #lineup-top-right:hover,
+/* #org-lineup-container #lineup-top-left:hover, #org-lineup-container #lineup-top-right:hover,
 #org-lineup-container .lineup-left:hover, #org-lineup-container .lineup-right:hover,
 #org-lineup-container #lineup-bottom-left:hover, #org-lineup-container #lineup-bottom-right:hover,
 #org-lineup-container #lineup-top-left-selected:hover, #org-lineup-container #lineup-top-right-selected:hover,
@@ -57,7 +57,7 @@
 #org-lineup-container #lineup-bottom-left-selected:hover, #org-lineup-container #lineup-bottom-right-selected:hover{
     filter: brightness(130%);
     cursor: pointer
-}
+} */
 
 
 
@@ -73,11 +73,11 @@
     filter: brightness(110%);
 }
 
-#lineup-top-left, #lineup-top-left-selected{
+#lineup-top-left, #lineup-top-left-selected, #lineup-top-left .tank-icon, #lineup-top-left-selected .tank-icon{
     border-radius: 7px 0 0 0;
 }
 
-#lineup-top-right, #lineup-top-right-selected{
+#lineup-top-right, #lineup-top-right-selected, #lineup-top-right .tank-icon, #lineup-top-right-selected .tank-icon{
     border-radius: 0 7px 0 0;
 }
 
@@ -91,26 +91,49 @@
 
 #lineup-top-left, #lineup-top-right,
 #lineup-top-left-selected, #lineup-top-right-selected{
+    background-color: #394ba5
+}
+
+.lineup-left, .lineup-right,
+.lineup-left-selected, .lineup-right-selected{
+    background-color: #743333
+}
+
+#lineup-bottom-left, #lineup-bottom-right,
+#lineup-bottom-left-selected, #lineup-bottom-right-selected{
+    background-color: #3c672f
+}
+
+.tank-icon{
     background-image: url("/Tank_Icon_Flat_1.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
     background-color: #394ba5
 }
 
-.lineup-left, .lineup-right,
-.lineup-left-selected, .lineup-right-selected{
+.dps-icon{
     background-image: url("/dps.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
     background-color: #743333
 }
 
-#lineup-bottom-left, #lineup-bottom-right,
-#lineup-bottom-left-selected, #lineup-bottom-right-selected{
+.healer-icon{
     background-image: url("/Healer_Icon_Flat_1.png");
     background-repeat: no-repeat;
     background-position: 0% 50%;
     background-color: #3c672f
+}
+
+.tank-icon, .dps-icon, .healer-icon{
+    width: 23vw;
+    min-width: 6vw;
+    height: 12vh;
+}
+
+#org-lineup-container .tank-icon:hover, #org-lineup-container .dps-icon:hover, #org-lineup-container .healer-icon:hover{
+    filter: brightness(130%);
+    cursor: pointer
 }
 
 

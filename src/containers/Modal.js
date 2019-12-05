@@ -24,12 +24,14 @@ const Modal = (props) => {
         }
     }
 
-    const getWidth = () =>{
+    const getDimensions = () =>{
         switch (props.type) {
             case "PostNew":
-                return {width: "60vw"} 
+                return {width: "60vw", height: "80vh"} 
+            case "AccountNew":
+                return {width: "43vw", minHeight: "50vh"}
             default:
-                return {width: "43vw"}
+                return {width: "43vw", height: "80vh"}
         }
     }
 
@@ -45,7 +47,7 @@ const Modal = (props) => {
     return(
         <div className="modal-container">
             <h1 style={getPosition()} onClick={props.closeModal} className="modal-close">x</h1>
-            <div style={getWidth()}className="modal-div">
+            <div style={getDimensions()}className="modal-div">
             {renderModalContent()}
             </div>
         </div>

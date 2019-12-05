@@ -54,9 +54,7 @@ class UserCalendar extends Component {
                 <UpcomingEvents />
             </div>
             :
-            <div>
-                Loading
-            </div>
+            <img id="loading" src="/company_loader.png" alt="loading"/>
             
         )
     }

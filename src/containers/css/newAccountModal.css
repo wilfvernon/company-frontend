@@ -3,3 +3,18 @@
     background-size: cover;
     background-position: 0% 40%;
 }
+
+#username-scene{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5vh 3vw;
+}
+
+#username-scene input{
+    background-color: rgb(9, 9, 73)
+}
+
+#character-scene{
+    padding: 2vh 2vw;
+}

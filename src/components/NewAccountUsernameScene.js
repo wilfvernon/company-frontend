@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 import { RAILS_BASE_URL } from '../index'
+import './css/newAccountUsernameScene.css'
  
 const fetchAccount = (name) => fetch(RAILS_BASE_URL + "accounts/validate_new/" + name)
 
@@ -27,9 +28,7 @@ class NewAccountUsernameScene extends Component {
 
     render() { 
         return (
-            <form>
-                <input name="username" type="text" value={this.state.usernameInput} onChange={this.handleChange}/>
-            </form>
+                <input id="username-signup-form" name="username" type="text" value={this.state.usernameInput} onChange={this.handleChange}/>
         );
     }
 }

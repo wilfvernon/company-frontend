@@ -130,7 +130,7 @@ class Menu extends Component {
                 </div>
                 <hr/>
                 <div className="category">
-                    <div className="header">
+                    <div className="header" id="logout-button">
                         <h2 onClick={this.props.logoutAction}>Logout</h2> 
                     </div>
                 </div>

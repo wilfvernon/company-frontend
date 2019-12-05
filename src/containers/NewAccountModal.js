@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NewAccountUsernameScene from '../components/NewAccountUsernameScene'
 import NewAccountCharacterScene from '../components/NewAccountCharacterScene'
@@ -35,19 +35,17 @@ class NewAccountModal extends Component {
         switch (this.state.scene) {
             case 1:
                 return (
-                <Fragment>
+                <div id="username-scene">
                     <NewAccountUsernameScene 
                         setParentState={this.setParentState}
                         username={this.state.username}
                     />
-                    <div className="buttons-container">
-                        <button onClick={this.incrementScene}>Next</button>
-                    </div>  
-                </Fragment>
+                    <button onClick={this.incrementScene}>Next</button>                     
+                </div>
                 )
             case 2:
                 return (
-                <Fragment>
+                <div id="character-scene">
                     <NewAccountCharacterScene 
                         setParentState={this.setParentState}
                         character={this.state.character}
@@ -56,7 +54,7 @@ class NewAccountModal extends Component {
                         <button onClick={this.postAccount}>{this.state.character?"Create Account":"Skip and Create Account"}</button>
                         <button onClick={this.decrementScene}>Back</button>
                     </div>  
-                </Fragment>
+                </div>
                 )    
             default:
                 break;

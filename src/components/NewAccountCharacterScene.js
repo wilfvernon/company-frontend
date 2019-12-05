@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FFXIV_API_BASE_URL } from '../index'
+import './css/newAccountCharacterScene.css'
  
 class NewAccountCharacterScene extends Component {
 
@@ -29,16 +30,19 @@ class NewAccountCharacterScene extends Component {
 
     render(){
         return (
-            <div>
+            <div id="character-scene-info">
                 {this.lodestoneInstructions()}
                 <form onSubmit={this.handleSubmit}>
                     <input name="lodestoneId" type="text" value={this.state.lodestoneId} onChange={this.handleChange}/>
                     <input type="submit" value="Get Character"/>
                 </form>
                 {this.props.character?
-                <div>
+                <div id="character-scene-portrait">
                     <img className="char-portrait" src={this.props.character["Avatar"]} alt="char-img"/>
-                    <p>Is this you?</p>
+                    <div>
+                        <h4>{this.props.character["Name"]}</h4>
+                        <h5>{this.props.character["Server"]}</h5>
+                    </div>
                 </div>
                 :
                 null}

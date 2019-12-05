@@ -145,3 +145,8 @@
 .page-menu a:hover{
     color:rgba(255, 255, 255, 0.746)
 }
+
+#logout-button:hover{
+    color:rgba(255, 255, 255, 0.746);
+    cursor: pointer;
+}
