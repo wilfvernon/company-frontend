@@ -40,12 +40,13 @@ const MemberListItem = (props) => {
     }
 
     const isSelectable = () => {
-        return props.jobs && props.jobs.map(job=>job.job.role.charAt(0)).includes(props.slot.charAt(0))
+        if(props.slot)return props.jobs && props.jobs.map(job=>job.job.role.charAt(0)).includes(props.slot.charAt(0))
     }
-
+    console.log(props.jobs)
     const {profile_image, name } = objectDeconstructor()
     const { isAdmin, adminName } = props
     return (
+        props?
         <div onClick={handleClick} className={("member-list-item"+ (isSelectable()?"-selectable":""))}>
            <img className="member-list-profile-image" src={profile_image} alt={name + "-img"}/>
             <div className="member-list-info">
@@ -57,6 +58,8 @@ const MemberListItem = (props) => {
                 <h5>{isAdmin?adminName:null}</h5>
             </div>
         </div>
+        :
+        <h1>Loading</h1>
     );
 }
  

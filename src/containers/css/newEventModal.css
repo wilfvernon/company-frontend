@@ -11,7 +11,7 @@
 }
 
 .buttons-container{
-    margin: 2vh 2vw 0vh;
+    margin: 1vh 2vw 0vh;
     display: flex;
     flex-flow: row-reverse;
     justify-content: space-between;

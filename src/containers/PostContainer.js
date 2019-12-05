@@ -103,14 +103,15 @@ class PostContainer extends Component {
                                 <p>{post.poster.name}</p>
                             </div>
                         </div>
-
-                        <ReactQuill 
-                            style={post.poster.id===this.props.activeCharacter.id?this.userStyle():this.othersStyle()}
-                            modules={this.modules} 
-                            key={post.post.id} 
-                            value={post.post.text} 
-                            readOnly={true}
-                        />
+                        <div className="quill-div-message">
+                            <ReactQuill 
+                                style={post.poster.id===this.props.activeCharacter.id?this.userStyle():this.othersStyle()}
+                                modules={this.modules} 
+                                key={post.post.id} 
+                                value={post.post.text} 
+                                readOnly={true}
+                            />
+                        </div>
                     </div>
                 )
             })

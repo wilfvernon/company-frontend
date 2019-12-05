@@ -43,6 +43,19 @@ class CommunityShow extends Component {
         }else this.setState({api_community: this.dummyApiCommunity()})
         }   
         )
+        this.interval = setInterval(this.fetchThreads, 500)
+    }
+
+    fetchThreads = () =>{
+        if(this.state.community){
+        fetch(RAILS_BASE_URL + "communities/" + this.props.id + "/threads")
+        .then(res=>res.json())
+        .then(threads=>this.setState({threads}))
+        }
+    }
+
+    componentWillUnmount=()=>{
+        clearInterval(this.interval)
     }
 
     dummyApiCommunity=()=>{

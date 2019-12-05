@@ -1,5 +1,5 @@
 .upcoming-event-card{
-    height: 30vh;
+    /* min-height: 30vh; */
     width: 20vw;
     background-color: rgb(52, 55, 65);
     border-radius: 7px;

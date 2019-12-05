@@ -36,7 +36,7 @@ const EventShowDetails = (props) => {
                         <span style={{marginLeft: "5vh"}}>{event.community}</span>
                         </Link>
                     </h2>   
-                    <h3>Organised by {event.organiser.name}</h3>                
+                    <h3>Organised by {event.organiser.character.name}</h3>                
                     <h3>Goal: {event.purpose}</h3>
                     <p>{event.description}</p>
                 </div>

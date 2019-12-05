@@ -49,7 +49,7 @@ class EventShow extends Component {
         this.fetchEvents()
         .then(this.fetchContent)
         this.fetchThreads()
-        this.interval = setInterval(()=>this.fetchThreads(), 8000)
+        this.interval = setInterval(this.fetchThreads, 8000)
     }
 
     componentWillUnmount=()=>{

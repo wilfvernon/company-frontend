@@ -115,6 +115,11 @@
     text-align: end;
 }
 
+.individual-post-box-user .quill-div-message div{
+    text-align: start;
+
+}
+
 .post-poster-info{
     width: 30vw;
     height: 7vh;
