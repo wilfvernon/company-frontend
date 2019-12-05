@@ -72,6 +72,21 @@ export const eventPostAction = (e) => {
     return {type:"EVENT_POST", payload: e}
 }
 
+export const lineupSlotAction = (slot) => {
+    return {type: "LINEUP_SLOT", payload: slot}
+}
+
+export const clearLineupSlotAction = () => {
+    return {type: "CLEAR_LINEUP_SLOT"}
+}
+
+export const newSlotRender = (arr) => {
+    return {type: "NEW_SLOT_RENDER", payload: arr}
+}
+
+export const clearNewSlotRender = () => {
+    return {type: "CLEAR_NEW_SLOT_RENDER"}
+}
 //content
 export const contentAction = (content) => {
     return ({type: "ALL_CONTENT", payload: content})

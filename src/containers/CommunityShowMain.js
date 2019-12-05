@@ -53,7 +53,6 @@ class CommunityShowMain extends Component {
     }
 
     render() { 
-        console.log(this.props.community)
         const { community, view, changeView } = this.props
         return (
             <div className="community-show-main">

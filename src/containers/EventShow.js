@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import EventShowHeader from '../components/EventShowHeader'
 import EventShowDetails from '../components/EventShowDetails'
 import MemberList from './MemberList'
-import { joinEventModal, clearNewEventMember } from '../redux/actions'
+import { joinEventModal, clearNewEventMember, clearNewSlotRender } from '../redux/actions'
 import './css/eventShow.css'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
 import PostContainer from './PostContainer';
@@ -55,6 +55,7 @@ class EventShow extends Component {
     componentWillUnmount=()=>{
         clearInterval(this.interval)
         this.props.clearNewEventMember()
+        this.props.clearNewSlotRender()
     }
 
     disable = () =>{
@@ -89,7 +90,8 @@ class EventShow extends Component {
             case "members":
                 return (
                     <EventLineup
-                        
+                        organiser={this.state.event.organiser}  
+                        members={[...this.state.members, this.state.event.organiser]}
                     />
                 )
             default:
@@ -163,4 +165,4 @@ class EventShow extends Component {
         activeCharacter: state.characters.accountPrimary
     })
  
-export default connect(msp, {joinEventModal, clearNewEventMember})(EventShow);
+export default connect(msp, {joinEventModal, clearNewEventMember, clearNewSlotRender})(EventShow);

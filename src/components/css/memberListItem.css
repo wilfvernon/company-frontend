@@ -1,4 +1,4 @@
-.member-list-item{
+.member-list-item, .member-list-item-selectable{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -6,9 +6,22 @@
     width:22vw;
     margin: 2% 6%;
     padding: 3%;
-    background-color: rgb(76, 112, 148);
+    /* background-color: rgba(35, 165, 35, 0.739); */
     border-radius: 7px;
     box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746) 
+}
+
+.member-list-item{
+    background-color: rgb(76, 112, 148);
+}
+
+.member-list-item-selectable{
+    background-color: rgba(35, 165, 35, 0.739);
+}
+
+.member-list-item-selectable:hover{
+    cursor: pointer;
+    filter: brightness(120%);
 }
 
 .member-list-profile-image{
@@ -18,16 +31,12 @@
     margin-right: 1vw;
 }
 
-.member-list-item h3{
+.member-list-item h3, .member-list-item-selectable h3{
     margin-bottom: 1vh;
 }
 
 .member-list-job-icon{
     height: 5vh;
-    filter: brightness(50%)
-}
-
-.member-list-job-icon[selected]{
     filter: brightness(100%)
 }
 

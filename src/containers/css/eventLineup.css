@@ -7,11 +7,18 @@
     box-shadow: 3px 3px 10px 0px rgba(49, 80, 110, 0.746);
     padding: 2vh 2vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#lineup-container{
+.lineup-bg-container h2{
+    color:white;
+    margin: -2vh 0 1vh -35vw;
+    padding: 0;
+}
+
+#lineup-container, #org-lineup-container{
     display: flex;
     flex-direction: column;
     /* box-shadow: 0 0 20px 0 rgb(8, 8, 8) inset; */
@@ -26,8 +33,11 @@
 
 #lineup-top-left, #lineup-top-right,
 .lineup-left, .lineup-right,
-#lineup-bottom-left, #lineup-bottom-right{
-    width: 20vw;
+#lineup-bottom-left, #lineup-bottom-right,
+#lineup-top-left-selected, #lineup-top-right-selected,
+.lineup-left-selected, .lineup-right-selected,
+#lineup-bottom-left-selected, #lineup-bottom-right-selected{
+    width: 23vw;
     height: 12vh;
     background-color: whitesmoke;
     display: flex;
@@ -35,51 +45,73 @@
     align-items:center;
     margin:0;
     padding:0;
-    border: 1px solid rgba(156, 153, 135, 0.438)
+    border: 1px solid rgba(156, 153, 135, 0.438);
+    /* filter: brightness(80%) */
 }
 
-#lineup-top-left:hover, #lineup-top-right:hover,
-.lineup-left:hover, .lineup-right:hover,
-#lineup-bottom-left:hover, #lineup-bottom-right:hover{
+#org-lineup-container #lineup-top-left:hover, #org-lineup-container #lineup-top-right:hover,
+#org-lineup-container .lineup-left:hover, #org-lineup-container .lineup-right:hover,
+#org-lineup-container #lineup-bottom-left:hover, #org-lineup-container #lineup-bottom-right:hover,
+#org-lineup-container #lineup-top-left-selected:hover, #org-lineup-container #lineup-top-right-selected:hover,
+#org-lineup-container .lineup-left-selected:hover, #org-lineup-container .lineup-right-selected:hover,
+#org-lineup-container #lineup-bottom-left-selected:hover, #org-lineup-container #lineup-bottom-right-selected:hover{
     filter: brightness(130%);
     cursor: pointer
 }
 
-#lineup-top-left{
+
+
+#lineup-top-left, #lineup-top-right,
+.lineup-left, .lineup-right,
+#lineup-bottom-left, #lineup-bottom-right{
+    filter: brightness(80%)
+}
+
+#lineup-top-left-selected, #lineup-top-right-selected,
+.lineup-left-selected, .lineup-right-selected,
+#lineup-bottom-left-selected, #lineup-bottom-right-selected{
+    filter: brightness(110%);
+}
+
+#lineup-top-left, #lineup-top-left-selected{
     border-radius: 7px 0 0 0;
 }
 
-#lineup-top-right{
+#lineup-top-right, #lineup-top-right-selected{
     border-radius: 0 7px 0 0;
 }
 
-#lineup-bottom-left{
+#lineup-bottom-left, #lineup-bottom-left-selected{
     border-radius: 0 0 0 7px;
 }
 
-#lineup-bottom-right{
+#lineup-bottom-right, #lineup-bottom-right-selected{
     border-radius: 0 0 7px 0;
 }
 
-#lineup-top-left, #lineup-top-right{
+#lineup-top-left, #lineup-top-right,
+#lineup-top-left-selected, #lineup-top-right-selected{
     background-image: url("/Tank_Icon_Flat_1.png");
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background-position: 0% 50%;
     background-color: #394ba5
 }
 
-.lineup-left, .lineup-right{
+.lineup-left, .lineup-right,
+.lineup-left-selected, .lineup-right-selected{
     background-image: url("/dps.png");
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background-position: 0% 50%;
     background-color: #743333
 }
 
-#lineup-bottom-left, #lineup-bottom-right{
+#lineup-bottom-left, #lineup-bottom-right,
+#lineup-bottom-left-selected, #lineup-bottom-right-selected{
     background-image: url("/Healer_Icon_Flat_1.png");
     background-repeat: no-repeat;
-    background-position: 50% 50%;
+    background-position: 0% 50%;
     background-color: #3c672f
 }
+
 
 

@@ -1,0 +1,52 @@
+.event-lineup-card-container{
+    display: flex;
+    justify-content: flex-end;
+    height: 12vh;
+    width: 23vw;
+}
+.event-lineup-card,
+.event-lineup-card-top-right, .event-lineup-card-bottom-right,
+.org-event-lineup-card,
+.org-event-lineup-card-top-right, .org-event-lineup-card-bottom-right{
+    background-color: rgba(245, 245, 245, 0.52);
+    height: 12vh;
+    width: 17vw;
+}
+
+.event-lineup-card-info{
+    margin-left: 1vw;
+}
+
+.event-lineup-card-info h3{
+    margin-bottom: 0.5vh;
+    color: rgb(51, 51, 51);
+}
+
+.org-event-lineup-card:hover,
+.org-event-lineup-card-top-right:hover, .org-event-lineup-card-bottom-right:hover{
+    cursor: default;
+    filter: brightness(61%)
+}
+
+.event-lineup-card-top-right{
+    border-radius: 0 7px 0 0 
+}
+
+.event-lineup-card-bottom-right{
+    border-radius: 0 0 0 7px
+}
+
+.org-job-icon-lineup, .job-icon-lineup{
+    height: 5vh;
+    filter: brightness(50%)
+}
+
+.org-job-icon-lineup:hover, .org-job-icon-lineup-selected:hover{
+    filter: brightness(130%);
+    cursor: pointer
+}
+
+.org-job-icon-lineup-selected, .job-icon-lineup-selected{
+    height: 5vh;
+    filter: brightness(100%)
+}
