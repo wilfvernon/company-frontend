@@ -14,7 +14,7 @@ class NewPostModal extends Component {
     }
 
     bannerStyle=()=>({
-        backgroundImage: "url(http://novacrystallis.com/wp-content/uploads/2019/09/ishgard.png)",
+        backgroundImage: "url('http://novacrystallis.com/wp-content/uploads/2019/09/ishgard.png')",
         backgroundPosition: "0 -9vh"
     })
 
