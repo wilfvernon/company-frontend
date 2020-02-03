@@ -2,6 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.12.0",
+    "node": "12.10.0"
+  },
   "dependencies": {
     "awesome-debounce-promise": "^2.1.0",
     "globalize": "^1.4.2",
