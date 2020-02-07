@@ -18,8 +18,9 @@ const modalReducer= (prevState=defaultState, action) => {
         case "NEW_EVENT_MODAL":
             return {...prevState, modalType: "EventNew", modal:true}
         case "JOIN_EVENT_MODAL":
-            console.log(action.payload)
             return {...prevState, modalType: "EventJoin", modal:true, ecEvent: action.payload.event, ecContentImage: action.payload.image, ecButtonDisabler: action.payload.buttonDisabler}
+        case "DELETE_EVENT_MODAL":
+            return {...prevState, modalType: "EventDelete", modal:true, ecEvent: action.payload.event}
         case "NEW_ACCOUNT_MODAL":
             return {...prevState, modalType: "AccountNew", modal:true}
         case "NEW_POST_MODAL":

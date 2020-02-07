@@ -99,7 +99,8 @@ class EventShow extends Component {
         }
     }
 
-    render() { 
+    render() {
+        if(this.state.event) 
         return (
             <div className="event-show-page">
             {this.state.content ?
@@ -158,6 +159,7 @@ class EventShow extends Component {
             <img id="loading" src="/company_loader.png" alt="loader"/>}
             </div>
         );
+        else return <div></div>
     }
 }
 

@@ -16,7 +16,7 @@ const Modal = (props) => {
                 return <NewEventModal/>
             case "EventJoin":
                 return <JoinEventModal/>
-            case "Event Delete":
+            case "EventDelete":
                 return <DeleteEventModal/>
             case "AccountNew":
                 return <NewAccountModal/>
@@ -33,6 +33,8 @@ const Modal = (props) => {
                 return {width: "60vw", height: "80vh"} 
             case "AccountNew":
                 return {width: "43vw", minHeight: "50vh"}
+            case "EventDelete":
+                return {width: "30vw", height: "20vh", marginTop: "25vh"}
             default:
                 return {width: "43vw", height: "80vh"}
         }
@@ -42,6 +44,8 @@ const Modal = (props) => {
         switch (props.type) {
             case "PostNew":
                 return {marginLeft: "81vw"} 
+            case "EventDelete":
+                return {marginLeft: "65vw", marginTop: "20vh"}
             default:
                 return {marginLeft: "72vw"}
         }

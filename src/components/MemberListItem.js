@@ -42,7 +42,6 @@ const MemberListItem = (props) => {
     const isSelectable = () => {
         if(props.slot)return props.jobs && props.jobs.map(job=>job.job.role.charAt(0)).includes(props.slot.charAt(0))
     }
-    console.log(props.jobs)
     const {profile_image, name } = objectDeconstructor()
     const { isAdmin, adminName } = props
     return (

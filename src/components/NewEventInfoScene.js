@@ -41,6 +41,7 @@ class NewEventInfoScene extends Component {
     }
 
     handleCommunityChange = (event) => {
+        event.persist()
         const id = event.target.value
         const community = this.props.userCommunities.find(community => community.id === +(id))
         this.props.setEvent("community", community)
@@ -66,7 +67,7 @@ class NewEventInfoScene extends Component {
                 })
             }
         )
-        .catch(()=>console.log("Error"))
+        .catch(console.log)
     }
 
     renderCommunityOptions = () => {

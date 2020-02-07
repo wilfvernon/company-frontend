@@ -59,7 +59,6 @@ class JoinEventModal extends Component {
     }
 
     render() { 
-        console.log(this.props)
         return (
             <div>
                 <div className="banner" style={this.bannerStyle()}>

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './css/eventShowDetails.css'
+import {deleteEventModal} from '../redux/actions.js'
  
 const EventShowDetails = (props) => {
     
@@ -29,7 +30,7 @@ const EventShowDetails = (props) => {
     }
 
     const deleteEvent = () => {
-
+        props.deleteEventModal(event)
     }
     
     return (
@@ -69,4 +70,4 @@ const msp = (state) => ({
     activeCharacter: state.characters.accountPrimary
 }) 
  
-export default connect(msp)(EventShowDetails);
+export default connect(msp, {deleteEventModal})(EventShowDetails);

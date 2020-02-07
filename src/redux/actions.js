@@ -143,6 +143,10 @@ export const joinEventModal = (event, image, buttonDisabler) => {
     return {type:"JOIN_EVENT_MODAL", payload: { event, image, buttonDisabler }}
 }
 
+export const deleteEventModal = (event) => {
+    return {type:"DELETE_EVENT_MODAL", payload: { event }}
+}
+
 export const newAccountModal = () => {
     return {type:"NEW_ACCOUNT_MODAL"}
 }

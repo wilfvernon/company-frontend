@@ -1,0 +1,20 @@
+.delete-event-modal-container{
+    margin-top: 2.6vh;
+}
+
+.delete-event-modal-container .sub-banner,
+.delete-event-modal-container .success-banner,
+.delete-event-modal-container .failure-banner{
+    border-radius: 7px 7px 0 0
+}
+
+.delete-event-modal-container .buttons-container{
+    margin-top: 4vh
+}
+
+#event-delete-confirmed{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-top: 4vh
+}

@@ -24,7 +24,8 @@
 }
 
 #modal-job-icon-container{
-    margin: 0 2vw 0;
+    height: 36vh;
+    margin: 0 2vw 4vh;
     width: 42vw;
     display:flex;
     flex-direction: column;
