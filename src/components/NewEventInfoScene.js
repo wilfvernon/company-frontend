@@ -59,13 +59,14 @@ class NewEventInfoScene extends Component {
     }
 
     fetchCommunityOptions = () => {
-        fetch(RAILS_BASE_URL + "characters/" + this.props.event.character.id + "/communities")
+        fetch(RAILS_BASE_URL + "characters/" + this.props.userCharacters[0].id + "/communities")
         .then(res=>res.json())
         .then(comms=> { this.setState({
                     communities: comms
                 })
             }
         )
+        .catch(()=>console.log("Error"))
     }
 
     renderCommunityOptions = () => {
