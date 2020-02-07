@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './css/eventShowDetails.css'
  
 const EventShowDetails = (props) => {
@@ -26,6 +27,11 @@ const EventShowDetails = (props) => {
             </div> 
         )    
     }
+
+    const deleteEvent = () => {
+
+    }
+    
     return (
         <div id="event-detail-box">
             <div id="event-detail-content">
@@ -39,6 +45,11 @@ const EventShowDetails = (props) => {
                     <h3>Organised by {event.organiser.character.name}</h3>                
                     <h3>Goal: {event.purpose}</h3>
                     <p>{event.description}</p>
+                    {event.organiser.character.id === props.activeCharacter.id ?
+                        <button onClick={deleteEvent}>Delete</button>
+                        :
+                        null
+                    }
                 </div>
                 <div id="content-info-box">
                     <div id="content-info">
@@ -53,5 +64,9 @@ const EventShowDetails = (props) => {
         </div>
     );
 }
+
+const msp = (state) => ({
+    activeCharacter: state.characters.accountPrimary
+}) 
  
-export default EventShowDetails;
+export default connect(msp)(EventShowDetails);

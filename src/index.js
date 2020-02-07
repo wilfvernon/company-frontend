@@ -15,7 +15,7 @@ import modalReducer from './redux/modalReducer';
 import jobReducer from './redux/jobReducer';
 import thunkReducer from './redux/thunkReducer';
 
-export const RAILS_BASE_URL = "https://ffxiv-company-backend.herokuapp.com/api/v1/"
+export const RAILS_BASE_URL = "http://localhost:3000/api/v1/" //"localhost:3000/api/v1/" || "https://ffxiv-company-backend.herokuapp.com/api/v1/"
 export const FFXIV_API_BASE_URL = "https://xivapi.com/"
 
 

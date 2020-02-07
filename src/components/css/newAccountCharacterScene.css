@@ -6,11 +6,12 @@
 }
 
 #character-scene-info input{
-    background-color: rgb(2, 2, 100)
+    font-size: 2rem
     
 }
 
-#character-scene-portrait{   
+#character-scene-portrait{  
+    color: white; 
     margin-top: 2vh;
     display: flex;
     flex-direction: row;

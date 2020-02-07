@@ -31,6 +31,11 @@ class NewAccountModal extends Component {
         }
     }
 
+    getButtonClass = () => {
+        return this.state.valid ? "modal-div-button-next" : "modal-div-button-next-invalid"
+
+    }
+
     getScene=()=>{
         switch (this.state.scene) {
             case 1:
@@ -40,7 +45,7 @@ class NewAccountModal extends Component {
                         setParentState={this.setParentState}
                         username={this.state.username}
                     />
-                    <button onClick={this.incrementScene}>Next</button>                     
+                    <button className={this.getButtonClass()} onClick={this.incrementScene}>Next</button>                     
                 </div>
                 )
             case 2:
@@ -66,9 +71,11 @@ class NewAccountModal extends Component {
     }
 
     incrementScene = () => {
+        if(this.state.valid === true){
         this.setState(prevProps=>({
             scene: prevProps.scene + 1
         }))
+        }
     }
 
     decrementScene = () => {

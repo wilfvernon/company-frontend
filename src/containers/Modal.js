@@ -6,6 +6,7 @@ import './css/modal.css'
 import { connect } from 'react-redux'
 import { closeModal } from '../redux/actions'
 import JoinEventModal from './JoinEventModal';
+import DeleteEventModal from '../components/DeleteEventModal'
 
 const Modal = (props) => {
     
@@ -15,6 +16,8 @@ const Modal = (props) => {
                 return <NewEventModal/>
             case "EventJoin":
                 return <JoinEventModal/>
+            case "Event Delete":
+                return <DeleteEventModal/>
             case "AccountNew":
                 return <NewAccountModal/>
             case "PostNew":

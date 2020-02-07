@@ -4,15 +4,23 @@ import AwesomeDebouncePromise from 'awesome-debounce-promise';
 import { RAILS_BASE_URL } from '../index'
 import './css/newAccountUsernameScene.css'
  
-const fetchAccount = (name) => fetch(RAILS_BASE_URL + "accounts/validate_new/" + name)
+const fetchObj = (name) => ({
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    },
+    body: JSON.stringify({ name })
+})
 
+const fetchAccount = (name) => fetch(RAILS_BASE_URL + "accounts/validate_new/", fetchObj(name))
 
 const debouncedFetchAccount = AwesomeDebouncePromise(fetchAccount, 500)
 
 class NewAccountUsernameScene extends Component {
 
     state={
-        usernameInput: "",
+        usernameInput: this.props.username,
         username: ""
     }
     

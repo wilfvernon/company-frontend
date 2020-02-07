@@ -11,10 +11,11 @@
     margin: 5vh 3vw;
 }
 
-#username-scene input{
+/* #username-scene input{
     background-color: rgb(9, 9, 73)
-}
+} */
 
 #character-scene{
     padding: 2vh 2vw;
 }
+

@@ -27,17 +27,17 @@
 
 .form-column div input, select, option{
     width:10vw;
-    background-color:darkblue;
-    font-size: 1.5rem;
+    /* background-color:darkblue; */
+    /* font-size: 1.5rem; */
 }
 
-.form-column div label{
+/* .form-column div label{
     font-size: 1.5rem;
 }
 
 .form-column div input[name="date"]{
     font-size: 1.1rem;
-}
+} */
 
 #description{
     margin: 5%;
