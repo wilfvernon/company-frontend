@@ -48,6 +48,7 @@ const EventShowDetails = (props) => {
                     <p>{event.description}</p>
                     {event.organiser.character.id === props.activeCharacter.id ?
                         <button onClick={deleteEvent}>Delete</button>
+                        <button>Edit</button>
                         :
                         null
                     }
