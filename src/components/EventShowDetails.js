@@ -47,8 +47,10 @@ const EventShowDetails = (props) => {
                     <h3>Goal: {event.purpose}</h3>
                     <p>{event.description}</p>
                     {event.organiser.character.id === props.activeCharacter.id ?
-                        <button onClick={deleteEvent}>Delete</button>
-                        <button>Edit</button>
+                        <Fragment>
+                            <button onClick={deleteEvent}>Delete</button>
+                            <button>Edit</button>
+                        </Fragment>
                         :
                         null
                     }

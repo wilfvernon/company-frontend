@@ -5,7 +5,7 @@ import NewAccountCharacterScene from '../components/NewAccountCharacterScene'
 import ModalSubBanner from '../components/ModalSubBanner';
 import './css/newAccountModal.css'
 import { RAILS_BASE_URL } from '../index'
- 
+import { closeModal } from '../redux/actions'
 class NewAccountModal extends Component {
     
     state={
@@ -13,7 +13,8 @@ class NewAccountModal extends Component {
         valid: null,
         username: "",
         character: null,
-        postValid: null
+        postValid: null,
+        usernameInput: ""
     }
 
     renderSubBanner=()=>{
@@ -44,6 +45,7 @@ class NewAccountModal extends Component {
                     <NewAccountUsernameScene 
                         setParentState={this.setParentState}
                         username={this.state.username}
+                        usernameInput={this.state.usernameInput}
                     />
                     <button className={this.getButtonClass()} onClick={this.incrementScene}>Next</button>                     
                 </div>
@@ -56,8 +58,8 @@ class NewAccountModal extends Component {
                         character={this.state.character}
                     />
                     <div className="buttons-container">
-                        <button onClick={this.postAccount}>{this.state.character?"Create Account":"Skip and Create Account"}</button>
-                        <button onClick={this.decrementScene}>Back</button>
+                        <button onClick={this.state.postValid === true ? this.props.closeModal : this.postAccount}>{!this.state.postValid === true ?"Create Account":"Close"}</button>
+                        <button disabled={!!this.state.postValid} onClick={this.decrementScene}>Back</button>
                     </div>  
                 </div>
                 )    
@@ -70,13 +72,30 @@ class NewAccountModal extends Component {
         this.setState(obj)
     }
 
+    fetchObj = (name) => ({
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        body: JSON.stringify({ name })
+    })
+    
+    fetchAccount = (name) => fetch(RAILS_BASE_URL + "accounts/validate_new/", this.fetchObj(name))
+
+
     incrementScene = () => {
-        if(this.state.valid === true){
-        this.setState(prevProps=>({
-            scene: prevProps.scene + 1
-        }))
-        }
-    }
+        if(this.state.valid === true){   
+        this.fetchAccount(this.state.usernameInput)
+        .then(res=>res.json())
+        .then(res=>{
+            if(res.valid){
+                this.setState(prevProps=>({
+                        scene: prevProps.scene + 1
+                }))
+            }
+        })
+    }}
 
     decrementScene = () => {
         this.setState(prevProps=>({
@@ -126,4 +145,4 @@ class NewAccountModal extends Component {
     }
 }
  
-export default connect()(NewAccountModal);
+export default connect(null, {closeModal})(NewAccountModal);

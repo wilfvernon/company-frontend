@@ -28,7 +28,7 @@ class NewAccountUsernameScene extends Component {
 
     handleChange = async event => {
         event.persist();
-        this.setState({usernameInput: event.target.value})     
+        this.props.setParentState({usernameInput: event.target.value})     
         let valid = await debouncedFetchAccount(event.target.value)
         valid = await valid.json()
         this.props.setParentState({ username: event.target.value, valid: valid["valid"] })
@@ -36,7 +36,7 @@ class NewAccountUsernameScene extends Component {
 
     render() { 
         return (
-                <input id="username-signup-form" name="username" type="text" value={this.state.usernameInput} onChange={this.handleChange}/>
+                <input id="username-signup-form" name="username" type="text" value={this.props.usernameInput} onChange={this.handleChange}/>
         );
     }
 }

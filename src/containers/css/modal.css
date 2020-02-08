@@ -78,6 +78,17 @@
     background-color: rgba(255, 0, 0, 0.664)
 }
 
+.modal-div button:disabled{
+    color: rgb(170, 170, 170);
+    background-color: rgb(138, 136, 136);
+}
+
+.modal-div button:disabled:hover{
+    color: rgb(170, 170, 170);
+    background-color: rgb(138, 136, 136);
+}
+
+
 .modal-div button:hover{
     background-color: rgb(254, 255, 254);
     color: #36454F;
