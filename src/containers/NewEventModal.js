@@ -36,16 +36,20 @@ class NewEventModal extends Component {
     }
 
     setEditState = () => {
-        const { name, time, location, purpose, category, community_id, content, description } = this.props.event
+        const { name, time, location, purpose, category, community_id, content, description, organiser } = this.props.event
+        console.log(organiser.jobs)
+        this.setState({
+            name, location, purpose, category, content, description,  
+            start: time.start_time,
+            end: time.end_time,
+            date: time.start.slice(0, 10),
+            preferredJobs: organiser.jobs.map(j=>j.job)
+        })
         fetch(RAILS_BASE_URL + "communities/" + community_id)
         .then(res=>res.json())
         .then(res=>{
             this.setState({
-                name, location, purpose, category, content, description,
-                community: res.community,
-                start: time.start_time,
-                end: time.end_time,
-                date: time.start.slice(0, 10) 
+                community: res.community
             })
         })
     }
@@ -57,9 +61,9 @@ class NewEventModal extends Component {
     }
 
     setJobs = (job) => {
-        this.state.preferredJobs.includes(job)?
+        this.state.preferredJobs.find(j=>j.id===job.id)?
         this.setState(prevState=>({
-            preferredJobs: prevState.preferredJobs.filter(j=>j!==job)
+            preferredJobs: prevState.preferredJobs.filter(j=>j.id!==job.id)
         }))
         :
         this.setState(prevState=>({

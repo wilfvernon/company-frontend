@@ -20,7 +20,7 @@ class PreferredJobScene extends Component {
                     onClick={()=>this.handleClick(job)} 
                     src={job.icon} 
                     alt="job-icon"
-                    className={this.props.preferredJobs.includes(job)?"modal-job-icon-selected":"modal-job-icon"}
+                    className={this.props.preferredJobs.find(j=>j.id===job.id)?"modal-job-icon-selected":"modal-job-icon"}
                 />
             )
         })
@@ -46,6 +46,7 @@ class PreferredJobScene extends Component {
     }
 
     render() { 
+        console.log(this.props.preferredJobs)
         return (
             <div id="modal-job-icon-container">
                 {this.renderRoles()}
