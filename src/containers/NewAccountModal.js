@@ -20,7 +20,7 @@ class NewAccountModal extends Component {
     renderSubBanner=()=>{
         switch (this.state.scene) {
             case 1:
-                if(this.state.valid === null) return <ModalSubBanner class="sub-banner" text={()=><p>Enter a username:</p>}/>
+                if(this.state.valid === null) return <ModalSubBanner class="sub-banner" text={()=><p>Enter a username (if testing the website, please login as 'goose'):</p>}/>
                 else if(this.state.valid) return <ModalSubBanner class="success-banner" text={()=><p>That username is available</p>}/>
                 else return <ModalSubBanner class="failure-banner" text={()=><p><span>Sorry, that username is unavailable</span></p>}/> 
             case 2:
