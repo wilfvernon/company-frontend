@@ -110,7 +110,7 @@ class Menu extends Component {
                     </div>
                     {this.state.events?
                     <ul className="sub-menu">
-                        <h4 className="modal-link" onClick={this.props.newEventModal}>Add an event</h4>
+                        <h4 className="modal-link" onClick={()=>this.props.newEventModal()}>Add an event</h4>
                     </ul>
                     : null}
                 </div>

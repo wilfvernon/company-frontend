@@ -31,6 +31,23 @@ class NewEventModal extends Component {
 
     componentDidMount=()=>{
         this.setState({character: this.props.userCharacter})
+        console.log(this.props.event)
+        if(this.props.event){this.setEditState()}
+    }
+
+    setEditState = () => {
+        const { name, time, location, purpose, category, community_id, content, description } = this.props.event
+        fetch(RAILS_BASE_URL + "communities/" + community_id)
+        .then(res=>res.json())
+        .then(res=>{
+            this.setState({
+                name, location, purpose, category, content, description,
+                community: res.community,
+                start: time.start_time,
+                end: time.end_time,
+                date: time.start.slice(0, 10) 
+            })
+        })
     }
 
     setEvent = (key, value) => {
@@ -246,7 +263,8 @@ class NewEventModal extends Component {
 
 const msp = (state) => ({
     allContent: state.content.all,
-    userCharacter: state.characters.accountPrimary
+    userCharacter: state.characters.accountPrimary,
+    event: state.modal.ecEvent
 })
 
 export default connect(msp, { eventPostAction, closeModal })(NewEventModal)

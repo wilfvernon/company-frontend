@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './css/eventShowDetails.css'
-import {deleteEventModal} from '../redux/actions.js'
+import {deleteEventModal, newEventModal} from '../redux/actions.js'
  
 const EventShowDetails = (props) => {
     
@@ -49,7 +49,7 @@ const EventShowDetails = (props) => {
                     {event.organiser.character.id === props.activeCharacter.id ?
                         <Fragment>
                             <button onClick={deleteEvent}>Delete</button>
-                            <button>Edit</button>
+                            <button onClick={()=>props.newEventModal(props.event)}>Edit</button>
                         </Fragment>
                         :
                         null
@@ -73,4 +73,4 @@ const msp = (state) => ({
     activeCharacter: state.characters.accountPrimary
 }) 
  
-export default connect(msp, {deleteEventModal})(EventShowDetails);
+export default connect(msp, {deleteEventModal, newEventModal})(EventShowDetails);
