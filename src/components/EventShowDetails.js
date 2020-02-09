@@ -49,7 +49,7 @@ const EventShowDetails = (props) => {
                     {event.organiser.character.id === props.activeCharacter.id ?
                         <Fragment>
                             <button onClick={deleteEvent}>Delete</button>
-                            <button onClick={()=>props.newEventModal(props.event)}>Edit</button>
+                            <button onClick={()=>props.newEventModal(props.event, "PATCH")}>Edit</button>
                         </Fragment>
                         :
                         null

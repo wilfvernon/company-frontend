@@ -31,13 +31,11 @@ class NewEventModal extends Component {
 
     componentDidMount=()=>{
         this.setState({character: this.props.userCharacter})
-        console.log(this.props.event)
         if(this.props.event){this.setEditState()}
     }
 
     setEditState = () => {
         const { name, time, location, purpose, category, community_id, content, description, organiser } = this.props.event
-        console.log(organiser.jobs)
         this.setState({
             name, location, purpose, category, content, description,  
             start: time.start_time,
@@ -106,7 +104,7 @@ class NewEventModal extends Component {
                 <Fragment>
                     <PreferredJobScene setJobs={this.setJobs} preferredJobs={this.state.preferredJobs}/>
                     <div className="buttons-container">
-                        <button onClick={this.postEvent}>Create Event</button>
+                        <button onClick={this.postEvent}>{this.props.eventType === "POST" ? "Create Event" : "Edit Event"}</button>
                         <button onClick={this.decrementScene}>Back</button>                        
                     </div>
                 </Fragment>
@@ -222,10 +220,10 @@ class NewEventModal extends Component {
         }
     }
 
-    postEvent = () => {
+    postEvent = (type) => {
         if(this.incrementScene()){
-            fetch(RAILS_BASE_URL + "/events", {
-                method: "POST",
+            fetch(RAILS_BASE_URL + "events" + (this.props.eventType === "PATCH" ? "/" + this.props.event.id : null), {
+                method: this.props.eventType,
                 headers: {
                     "Accept":"application/json",
                     "Content-Type":"application/json"
@@ -268,7 +266,8 @@ class NewEventModal extends Component {
 const msp = (state) => ({
     allContent: state.content.all,
     userCharacter: state.characters.accountPrimary,
-    event: state.modal.ecEvent
+    event: state.modal.ecEvent,
+    eventType: state.modal.eventType
 })
 
 export default connect(msp, { eventPostAction, closeModal })(NewEventModal)

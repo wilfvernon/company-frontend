@@ -135,8 +135,8 @@ export const toggleMenuAction = () => {
     return {type: "TOGGLE_MENU"}
 }
 
-export const newEventModal = (event=null) => {
-    return {type:"NEW_EVENT_MODAL", payload: { event }}
+export const newEventModal = (event=null, eventType="POST") => {
+    return {type:"NEW_EVENT_MODAL", payload: { event, eventType }}
 }
 
 export const joinEventModal = (event, image, buttonDisabler) => {
