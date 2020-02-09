@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { eventPostAction, closeModal } from '../redux/actions'
 import { FFXIV_API_BASE_URL, RAILS_BASE_URL } from '../index'
 import './css/newEventModal.css'
+import { Link } from 'react-router-dom'
 
 class NewEventModal extends Component {
 
@@ -114,7 +115,9 @@ class NewEventModal extends Component {
                 <Fragment>
                     <NewEventConfirmedScene />
                     <div className="buttons-container">
-                        <button onClick={this.props.closeModal}>Close</button>
+                        <Link to={'/events/' + this.props.eventId}>
+                            <button onClick={this.props.closeModal}>Close</button>
+                        </Link>
                     </div>
                 </Fragment>
                 )
@@ -222,7 +225,7 @@ class NewEventModal extends Component {
 
     postEvent = (type) => {
         if(this.incrementScene()){
-            fetch(RAILS_BASE_URL + "events" + (this.props.eventType === "PATCH" ? "/" + this.props.event.id : null), {
+            fetch(RAILS_BASE_URL + "events" + (this.props.eventType === "PATCH" ? "/" + this.props.event.id : ""), {
                 method: this.props.eventType,
                 headers: {
                     "Accept":"application/json",
@@ -232,7 +235,8 @@ class NewEventModal extends Component {
             }).then(res=>res.json())
             .then(res=>{
                 if(res.valid){
-                    this.props.eventPostAction(res.event)
+                    this.props.eventPostAction(res.event, this.props.eventType)
+                    this.props.eventFetch()
                     this.setState({
                         postValid: true
                     })
@@ -267,7 +271,9 @@ const msp = (state) => ({
     allContent: state.content.all,
     userCharacter: state.characters.accountPrimary,
     event: state.modal.ecEvent,
-    eventType: state.modal.eventType
+    eventType: state.modal.eventType,
+    eventId: state.events.newEventId,
+    eventFetch: state.events.eventFetch
 })
 
 export default connect(msp, { eventPostAction, closeModal })(NewEventModal)

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import EventShowHeader from '../components/EventShowHeader'
 import EventShowDetails from '../components/EventShowDetails'
 import MemberList from './MemberList'
-import { joinEventModal, clearNewEventMember, clearNewSlotRender } from '../redux/actions'
+import { joinEventModal, clearNewEventMember, clearNewSlotRender, setEventFetch } from '../redux/actions'
 import './css/eventShow.css'
 import { RAILS_BASE_URL, FFXIV_API_BASE_URL } from '../index'
 import PostContainer from './PostContainer';
@@ -45,9 +45,14 @@ class EventShow extends Component {
         .then(threads=>this.setState({threads}))
     }
 
-    componentDidMount=()=>{
+    fetchAllEventInfo = () => {
         this.fetchEvents()
         .then(this.fetchContent)
+    }
+
+    componentDidMount=()=>{
+        this.fetchAllEventInfo()
+        this.props.setEventFetch(this.fetchAllEventInfo)
         this.fetchThreads()
         this.interval = setInterval(this.fetchThreads, 8000)
     }
@@ -165,4 +170,4 @@ class EventShow extends Component {
         activeCharacter: state.characters.accountPrimary
     })
  
-export default connect(msp, {joinEventModal, clearNewEventMember, clearNewSlotRender})(EventShow);
+export default connect(msp, {joinEventModal, clearNewEventMember, clearNewSlotRender, setEventFetch})(EventShow);

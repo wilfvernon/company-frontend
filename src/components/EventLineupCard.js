@@ -42,10 +42,11 @@ class EventLineupCard extends Component {
         e.stopPropagation()
     }
 
-    renderJobs=()=>{   
+    renderJobs=()=>{ 
+        console.log(this.props.jobs)  
         const jobs = this.props.jobs.filter(job=>job.job.role === this.props.slot.slice(0, (this.props.slot.length-1)))
+        console.log(jobs)
         return jobs.map(job=>{
-            if(this.state.selectedJob){
             return (
                 <img 
                     className={this.iconStyle(job)}
@@ -55,9 +56,6 @@ class EventLineupCard extends Component {
                     onClick={()=>this.selectJob(job)}
                 />
             )
-        }else{
-            return null
-        }
     })
     }
     render() { 

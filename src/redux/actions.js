@@ -68,8 +68,8 @@ export const fetchUpcomingEvents = (id) => {
     }
 }
 
-export const eventPostAction = (e) => {
-    return {type:"EVENT_POST", payload: e}
+export const eventPostAction = (e, type) => {
+    return {type:"EVENT_" + type, payload: e}
 }
 
 export const lineupSlotAction = (slot) => {
@@ -98,6 +98,10 @@ export const fetchContent = () => {
         .then(res=>res.json())
         .then(content=>dispatch(contentAction(content)))
     }
+}
+
+export const setEventFetch = (fetch) => {
+    return ({type: "SET_EVENT_FETCH", payload: fetch})
 }
 
 //accounts

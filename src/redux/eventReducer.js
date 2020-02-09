@@ -3,7 +3,9 @@ const defaultState = {
     pastEvents: [],
     upcomingEvents: [],
     lineupSlot: "none",
-    newSlots: {}
+    newSlots: {},
+    newEventId: "",
+    eventFetch: null
 };
 const newSlotContent = (prevState, arr) =>{
     return arr.length === 1 ?
@@ -20,7 +22,12 @@ const eventReducer = (prevState = defaultState, action) => {
         case "UPCOMING_EVENTS":
             return {...prevState, upcoming: action.payload}
         case "EVENT_POST":
-            return {...prevState, userEvents: [...prevState.userEvents, action.payload]}
+            return {...prevState, userEvents: [...prevState.userEvents, action.payload], newEventId: action.payload.id}
+        case "EVENT_PATCH":
+            const userEvents = prevState.userEvents.filter(e=>e.id!==action.payload.id)
+            return {...prevState, userEvents: [...userEvents, action.payload], newEventId: action.payload.id}
+        case "SET_EVENT_FETCH":
+            return {...prevState, eventFetch: action.payload}
         case "LINEUP_SLOT":
             return {...prevState, lineupSlot: action.payload}
         case "CLEAR_LINEUP_SLOT":
