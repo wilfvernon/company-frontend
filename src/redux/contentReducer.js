@@ -19,7 +19,8 @@ const contentReducer = (prevState = defaultState, action) => {
                 all: action.payload, 
                 raids: contentFilter(action.payload, "Raid"), 
                 savageRaids: contentFilter(action.payload, "Savage Raid"),
-                trials: contentFilter(action.payload, "Trial")   
+                trials: contentFilter(action.payload, "Trial"),
+                extremeTrials: contentFilter(action.payload, "Extreme Trial")
             }
         default:
             return prevState

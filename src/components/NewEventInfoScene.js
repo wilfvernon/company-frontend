@@ -115,8 +115,10 @@ class NewEventInfoScene extends Component {
                         <div>
                             <label>Content Type:</label>
                             <select name="category" value={category} onChange={this.handleChange} required>
-                                <option value="Raids">Raid</option>
                                 <option value="Savage Raids">Savage Raid</option>
+                                <option value="Extreme Trials">Extreme Trial</option>
+                                <option value="Raids">Raid</option>
+                                <option value="Trials">Trial</option>
                             </select>
                         </div>
                         <div>

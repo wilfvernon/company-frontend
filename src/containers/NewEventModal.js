@@ -20,7 +20,7 @@ class NewEventModal extends Component {
         date: "",
         location: "",
         purpose: "Progression",
-        category: "Raids",
+        category: "Savage Raids",
         community: "",
         content: "",
         description: "",
