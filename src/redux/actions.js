@@ -27,7 +27,11 @@ export const clearNewEventMember = () =>{
 }
 
 
-//free companies
+//communities
+export const addCommunity = (community) => {
+    return {type: "ADD_COMMUNITY", payload: community}
+}
+
 export const freeCompanyAction = (FC) => {
     return {type: "FREE_COMPANY_FROM_API", payload: FC}
 }

@@ -62,7 +62,8 @@ class NewEventInfoScene extends Component {
     fetchCommunityOptions = () => {
         fetch(RAILS_BASE_URL + "characters/" + this.props.userCharacters[0].id + "/communities")
         .then(res=>res.json())
-        .then(comms=> { this.setState({
+        .then(comms=> { 
+            this.setState({
                     communities: comms
                 })
             }
@@ -71,7 +72,9 @@ class NewEventInfoScene extends Component {
     }
 
     renderCommunityOptions = () => {
+        console.log("state", this.state.communities)
         return this.state.communities.map(community =>{
+            console.log(community, community.id)
             return <option key={community.id} value={community.id}>{community.name}</option> 
         })     
     }
@@ -136,13 +139,10 @@ class NewEventInfoScene extends Component {
                         </div>
                         <div>
                             <label>Community:</label>
-                            <select name="community" value={community.id} onChange={this.handleCommunityChange} required>
+                            <select name="community" value={community?community.id:"None"} onChange={this.handleCommunityChange} required>
                                 <option value="None">None{character?null:" (Please Select a Character)"}</option>
                                 {character?
-                                    this.state.communities.length?
-                                        this.renderCommunityOptions()
-                                        :
-                                        this.fetchCommunityOptions()
+                                    this.renderCommunityOptions()
                                     : null
                                 }
                                 

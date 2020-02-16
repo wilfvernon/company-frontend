@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import CommunityShowHeader from '../components/CommunityShowHeader'
 import CommunityShowMain from './CommunityShowMain'
 import MemberList from './MemberList'
+import { addCommunity } from '../redux/actions'
 // import UpcomingEvents from './UpcomingEvents'
 import './css/communityShow.css'
 
@@ -73,9 +74,13 @@ class CommunityShow extends Component {
                 community_id: this.state.community.id,
                 character_id: this.props.activeCharacter.id
             })
-        }).then(this.setState({
-            members: [...this.state.members, this.props.activeCharacter]
-        }))
+        }).then(res=>res.json())
+        .then((res)=>{
+            this.props.addCommunity(res.community)
+            this.setState({
+                members: [...this.state.members, this.props.activeCharacter]
+            })}
+        )
         this.disable()
     }
 
@@ -128,4 +133,4 @@ const msp = (state) => ({
     activeCharacter: state.characters.accountPrimary
 })
 
-export default connect(msp)(CommunityShow)
+export default connect(msp, { addCommunity })(CommunityShow)
