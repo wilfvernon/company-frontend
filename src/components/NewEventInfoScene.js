@@ -80,7 +80,7 @@ class NewEventInfoScene extends Component {
     }
 
     render() { 
-        const { name, start, end, date, location, category, purpose, community, content, character } = this.props.event
+        const { name, start, end, date, location, category, purpose, community, content, character, expansion } = this.props.event
         return (
             <form className="form-container">
                 <div className="form">
@@ -105,8 +105,6 @@ class NewEventInfoScene extends Component {
                             <label>Location:</label>
                             <input name="location" type="text" value={location} onChange={this.handleChange} placeholder="Location"/>
                         </div>
-                    </div>
-                    <div className="form-column">
                         <div>
                             <label>Goal:</label>
                             <select name="purpose" value={purpose} onChange={this.handleChange} required>
@@ -115,6 +113,8 @@ class NewEventInfoScene extends Component {
                                 <option value="Farm">Farm</option>
                             </select>
                         </div>
+                    </div>
+                    <div className="form-column">
                         <div>
                             <label>Content Type:</label>
                             <select name="category" value={category} onChange={this.handleChange} required>
@@ -122,6 +122,15 @@ class NewEventInfoScene extends Component {
                                 <option value="Extreme Trials">Extreme Trial</option>
                                 <option value="Raids">Raid</option>
                                 <option value="Trials">Trial</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Expansion:</label>
+                            <select name="expansion" value={expansion} onChange={this.handleChange} required>
+                                <option value="A Realm Reborn">A Realm Reborn</option>
+                                <option value="Heavensward">Heavensward</option>
+                                <option value="Stormblood">Stormblood</option>
+                                <option value="Shadowbringers">Shadowbringers</option>
                             </select>
                         </div>
                         <div>

@@ -21,6 +21,7 @@ class NewEventModal extends Component {
         location: "",
         purpose: "Progression",
         category: "Savage Raids",
+        expansion: "Shadowbringers",
         community: "",
         content: "",
         description: "",
@@ -71,13 +72,13 @@ class NewEventModal extends Component {
     }
 
     getScene = () => {
-        const { scene, name, start, end, date, location, purpose, category, community, content, character } = this.state
+        const { scene, name, start, end, date, location, purpose, category, community, content, character, expansion } = this.state
         switch (scene) {
             case 1:
                 return (
                 <Fragment>
                     <NewEventInfoScene 
-                        event={{ name, start, end, date, location, purpose, category, community, content, character }} 
+                        event={{ name, start, end, date, location, purpose, category, community, content, character, expansion }} 
                         setEvent={this.setEvent} 
                         setContent={this.setContent}
                     />
