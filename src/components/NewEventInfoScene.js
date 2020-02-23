@@ -48,7 +48,7 @@ class NewEventInfoScene extends Component {
     }
 
     renderContentOptions = () => {
-        return this.props.allContent[toCamelCase(this.props.event.category)].map(content =>{
+        return this.props.allContent[toCamelCase(this.props.event.category)].filter(content=>content.expansion===this.props.event.expansion).map(content =>{
             return <option key={content.id} value={content.id}>{content.name}</option>
         })
     }
