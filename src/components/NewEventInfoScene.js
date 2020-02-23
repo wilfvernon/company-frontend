@@ -48,7 +48,7 @@ class NewEventInfoScene extends Component {
     }
 
     renderContentOptions = () => {
-        return this.props.allContent[toCamelCase(this.props.event.category)].filter(content=>content.expansion===this.props.event.expansion).map(content =>{
+        return this.props.allContent[toCamelCase(this.props.event.category)].filter(content=> content.expansion.length ? content.expansion===this.props.event.expansion : true).map(content =>{
             return <option key={content.id} value={content.id}>{content.name}</option>
         })
     }
@@ -122,6 +122,7 @@ class NewEventInfoScene extends Component {
                                 <option value="Extreme Trials">Extreme Trial</option>
                                 <option value="Raids">Raid</option>
                                 <option value="Trials">Trial</option>
+                                <option value="Treasure Hunts">Treasure Hunt</option>
                             </select>
                         </div>
                         <div>

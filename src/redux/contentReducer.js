@@ -2,7 +2,8 @@ const defaultState = {
     all: [],
     raids: [],
     savageRaids: [],
-    trials: []
+    trials: [],
+    treasureHunts: []
 };
  
 const contentFilter = (array, category) => {
@@ -20,7 +21,8 @@ const contentReducer = (prevState = defaultState, action) => {
                 raids: contentFilter(action.payload, "Raid"), 
                 savageRaids: contentFilter(action.payload, "Savage Raid"),
                 trials: contentFilter(action.payload, "Trial"),
-                extremeTrials: contentFilter(action.payload, "Extreme Trial")
+                extremeTrials: contentFilter(action.payload, "Extreme Trial"),
+                treasureHunts: contentFilter(action.payload, "Treasure Hunt")
             }
         default:
             return prevState
