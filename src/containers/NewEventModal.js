@@ -219,6 +219,12 @@ class NewEventModal extends Component {
                 return "https://xivapi.com/i/061000/061802.png"
             case "Raids":
                 return "https://xivapi.com/i/061000/061802.png"
+            case "Trials":
+                return "https://xivapi.com/i/060000/060834.png"
+            case "Extreme Trials":
+                return "https://xivapi.com/i/060000/060834.png"
+            case "Treasure Hunts":
+                return "https://xivapi.com/i/060000/060838.png"
             default:
                 break;
         }
