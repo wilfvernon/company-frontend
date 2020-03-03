@@ -237,7 +237,9 @@ class NewEventModal extends Component {
             .then(res=>{
                 if(res.valid){
                     this.props.eventPostAction(res.event, this.props.eventType)
-                    this.props.eventFetch()
+                    if(this.props.eventFetch){
+                        this.props.eventFetch()
+                    }
                     this.setState({
                         postValid: true
                     })
